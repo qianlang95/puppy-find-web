@@ -27,6 +27,7 @@
 import Search from "./Search";
 import Detail from "./Detail";
 import Post from "./Post";
+import Comments from "./Comments";
 import {HashRouter} from "react-router-dom";
 import {Routes, Route, Navigate} from "react-router";
 
@@ -42,6 +43,8 @@ function App() {
             <Route path="/detail/:breedId/*"    element={<Detail/>}/>
 
             <Route path="/post"    element={<Post/>}/>
+
+            {/* <Route path="/comments"    element={<Comments/>}/> */}
            
         </Routes>
 
