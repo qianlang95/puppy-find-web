@@ -2,6 +2,7 @@
 
 import { NavLink } from "react-router-dom";
 import "./index.css"
+import "./pet-bg.jpg"
 
 function Navbar() {
   return (
@@ -11,7 +12,7 @@ function Navbar() {
       <ul className="navbar-nav post-edit">
         <li className="nav-item post-edit2"><NavLink className="nav-link" to="/">
 
-            <button className="btn btn-secondary">Post</button>
+            <button className="btn btn-secondary btn-edit">Post</button>
             </NavLink></li>
         {/* <li className="nav-item"><NavLink className="nav-link" to="/">Home</NavLink></li> */}
 

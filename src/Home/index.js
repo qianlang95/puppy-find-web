@@ -17,7 +17,12 @@ function Home(){
     return(
         <div>
             <Navbar/>
-            
+            <div>
+                <h2>Implementing cards</h2>
+            </div>
+
+
+
 
   </div>
 
