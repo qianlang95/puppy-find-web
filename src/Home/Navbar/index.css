@@ -4,6 +4,14 @@
     justify-content: space-between;
     align-items: center;
     background-color: rgb(237, 230, 230);
+    background: url("./sl_011023_55240_07.jpg") center repeat;
+        background-position: center;
+        background-size: cover;
+  }
+
+  .nav-logo{
+    font-size: xx-large;
+    font-weight: bolder;
   }
   
   .navbar-nav {
@@ -15,23 +23,37 @@
     display: flex;
   }
   
-  .post-edit{
-        /* background: burlywood; */
-        background: url("./5897221.jpg") center repeat;
+  /* .post-edit{ */
+
+        /* background: url("./221.jpg");
         background-position: center;
         background-size: cover;
         border-radius: 20px;
-        width: 260px;
-        margin-left: 55px;
-        margin-right: 27px;
+        width: 260px; */
 
+  /* } */
+
+  .embrio{
+    margin-left: 20px;
+    width: 90px;
+    border-radius: 20px;
+    border-style:dashed;
   }
 
   .post-edit2{
     display: flex;
-    margin-left: 99px;
+    margin-left: 20px;
+    font-size: large;
+    font-weight: bolder;
   }
 
   .btn-edit{
     border-radius: 20px;
+  }
+
+  .nav-end{
+    border-radius: 20px;
+    margin-left: 10px;
+    background: url("./pet-bg.jpg") center repeat;
+    width: 90px;
   }
