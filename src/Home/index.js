@@ -1,31 +1,29 @@
 
+import "./index.css"
+import Navbar from "./Navbar/navbar"
 
 function Home(){
 
+
+    const ewq = ["789", "678", "567"]
+    const qwe = ["890", ...ewq, "456"]
+    const wer = qwe.find((bnm, asd) => bnm === "678")
+
+
+
+
+    
+
     return(
         <div>
+            <Navbar/>
+            
 
-            <h2>Testing home</h2>
-
-            <nav className="navbar">
-                <ul>
-                    <li>lol</li>
-                    <li>lol</li>
-                    <li>lol</li>
-                </ul>
-            </nav>
-
-            <footer>
-                <ul>
-                    <li>lol</li>
-                    <li>lol</li>
-                    <li>lol</li>
-                </ul>
-            </footer>
+  </div>
 
 
-        </div>
     );
+
 }
 
 export default Home;

@@ -1,0 +1,39 @@
+/* 
+
+.navb{
+    background-color: rgb(237, 230, 230);
+}
+
+.action-users{
+    display: flex;
+} */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(237, 230, 230);
+  }
+  
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  .action-users {
+    display: flex;
+  }
+  
+  .post-edit{
+        background: burlywood;
+        border-radius: 20px;
+        width: 160px;
+        margin-left: 55px;
+        margin-right: 27px;
+
+  }
+
+  .post-edit2{
+    display: flex;
+    margin-left: 42px;
+  }
