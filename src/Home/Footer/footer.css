@@ -1,0 +1,16 @@
+/* html, body {
+    height: 100%;
+    margin: 0;
+  } */
+
+  
+.footer-d{
+    background-color: #4e8dcc; 
+    border-top: 1px solid #e7e7e7; 
+    text-align: center; 
+    padding: 20px 0; 
+    position: relative; 
+    bottom: 0; 
+    width: 100%; 
+
+}
