@@ -20,7 +20,7 @@ function FooterNav(){
 
              <ul class="nav nav-ed ">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">About</a>
+                <a class="nav-link active btn btn-warning btn-supp" aria-current="page" href="#">About</a>
              </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Mattia</a>
@@ -34,7 +34,7 @@ function FooterNav(){
             </li>
 
             <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Copyright 2023</a>
+                <a class="nav-link disabled" aria-disabled="true">Copyright© 2023</a>
             </li>
 
             </ul>
