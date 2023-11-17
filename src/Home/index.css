@@ -1,4 +1,10 @@
-
+.web-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* background: url("./pet-bg.jpg") center repeat; */
+    background: url("./misc/sl_011023_55240_03.jpg");
+}
 
 .lol{
     border: solid black

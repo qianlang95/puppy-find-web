@@ -5,12 +5,20 @@
 
   
 .footer-d{
-    background-color: #4e8dcc; 
+    background-color: #e7ecf1; 
     border-top: 1px solid #e7e7e7; 
-    text-align: center; 
+    text-align: center  ; 
+    justify-content: center;
+    display: flex;
     padding: 20px 0; 
     position: relative; 
     bottom: 0; 
     width: 100%; 
 
+}
+
+
+
+.nav-ed{
+  /* justify-content: center; */
 }
