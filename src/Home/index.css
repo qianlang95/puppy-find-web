@@ -10,3 +10,20 @@
 .lol{
     border: solid black
 }
+
+.moved{
+    margin-left: 7px ;
+}
+
+.spacing{
+    margin-left: 7px !important;
+}
+
+.white_spacing_up{
+    margin-top: 30px !important;
+    margin-bottom: 40px !important;
+}
+
+.mv_up{
+    margin-right: 10px;
+}
