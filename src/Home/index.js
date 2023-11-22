@@ -6,16 +6,50 @@ import  pupImage from "./misc/english-springer-spaniel-dog-puppy-artistic-style-
 
 import catImage from "./misc/catImage.jpg"
 
+// import * as client from "./client.js"
+
+
 import db from "../Database"
+import { useState } from "react"
 
 function Home(){
+    // const ewq = ["789", "678", "567"]
+    // const qwe = ["890", ...ewq, "456"]
+    // const wer = qwe.find((bnm, asd) => bnm === "678")
 
+    // const pets = db.pets;
 
-    const ewq = ["789", "678", "567"]
-    const qwe = ["890", ...ewq, "456"]
-    const wer = qwe.find((bnm, asd) => bnm === "678")
+    // const [pets, setPets] = useState(db.pets)
+    // const [pet, setPet] = useState({
+    //     name: "New Name", breed: "terrier", age:"2", location: "San Jose, CA", type: "dog",
+    // })
 
-    const pets = db.pets;
+    const [pets, setPets] = useState(db.pets)
+    const [pet, setPet] = useState({
+        name: "New Name", breed: "terrier", age:"2", location: "San Jose, CA", type: "dog",
+    })
+
+    const addPet = () =>{
+        setPets([...pets, {...pet, _id: new Date().getTime().toString()}])
+    }
+    
+    const deletePet = (petId) => {
+        console.log(`about to delete  ${petId}`)
+        setPets(pets.filter( (pet) => pet._id !== petId ))
+        console.log("succesfully deleted")
+    }
+    
+    const updatePet = () => {
+        setPets(
+            pets.map( (p) => {
+                if (p._id === pet._id ){
+                    return pet;
+                }else{
+                    return p;
+                }
+            })
+        )
+    }
     
 
     return(
@@ -53,26 +87,26 @@ function Home(){
             <div className="mv-on">
 
                 <div>
-                    <select className="form-select" aria-label="Default">
+                    <select className="form-select" aria-label="Default" onChange={(e)=> setPet({...pet, type: e.target.value})}>
                         <option selected>Choose type of puppy</option>
-                        <option value="cat">Cat</option>
-                        <option value="cat">Dog</option>
+                        <option value="cat" >Cat</option>
+                        <option value="dog">Dog</option>
 
 
                     </select>
                 </div>
                 
-                <input  className="form-control" placeholder="Name" />
-                <input  className="form-control" placeholder="Breed" />
-                <input  className="form-control" placeholder="Age" type="number" />
-                <input  className="form-control" placeholder="Lifespan" type="number" />
-                <input  className="form-control" placeholder="Country of Origin" type="text" />
+                <input  className="form-control" value={pet.name} onChange={(e) => setPet({...pet, name: e.target.value})} placeholder="Name" />
+                <input  className="form-control" value={pet.breed} onChange={(e)=> setPet({...pet, breed: e.target.value})} placeholder="Breed" />
+                <input  className="form-control"  value={pet.age} onChange={(e) => setPet({...pet, age: e.target.value})} placeholder="Age" type="number" />
+                {/* <input  className="form-control" placeholder="Lifespan" type="number" /> */}
+                <input  className="form-control" value={pet.location} onChange={(e) => setPet({...pet, location: e.target.value })} placeholder="Location" type="text" />
 
                 {/* <label htmlFor="lol" className="age-f">age</label>
                 <input id="lol"   className="form-control age-f" type="date"/> */}
             <li className="list-group-item">                
-                <button className="btn btn-warning ed-bs ed-s" > <b>Add</b> </button>
-                <button className="btn btn-warning ed-s"><b>Update</b></button>
+                <button className="btn btn-warning ed-bs ed-s" onClick={addPet} > <b>Add</b> </button>
+                <button className="btn btn-warning ed-s" onClick={updatePet}><b>Update</b></button>
 
             </li>
             </div>
@@ -91,7 +125,7 @@ function Home(){
                     {pets.map((pet) => (
 
 
-                <div className="card mv_up" style={{"width": "15rem"}}>
+                        <div className="card mv_up" style={{"width": "15rem"}}>
                     {/* <img src={pupImage} className="card-img-top" alt="..." /> */}
                     <img src={pet.type === "dog" ? pupImage : catImage} className="card-img-top" alt="..." />
                     <div className="card-body">
@@ -105,6 +139,7 @@ function Home(){
                         <li className="list-group-item">Location: {pet.location}</li>
 
                     </ul>
+                    <button className="btn btn-danger"  onClick={(event) => {event.preventDefault(); deletePet(pet._id)}}>Delete Post</button>
                 </div>
 
 
