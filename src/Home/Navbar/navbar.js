@@ -14,12 +14,12 @@ function Navbar() {
       <ul className="navbar-nav post-edit">
 
         <li className="nav-item post-edit2">
-            <NavLink className="nav-link btn btn-warning embrio" to="/">
+            {/* <NavLink className="nav-link btn btn-warning embrio" to="/">
             Adopt
             </NavLink>
             <NavLink className="nav-link btn btn-warning embrio" to="/">
             List
-            </NavLink>
+            </NavLink> */}
             
             </li>
 

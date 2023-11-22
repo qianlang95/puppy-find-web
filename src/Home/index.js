@@ -10,16 +10,15 @@ function Home(){
     const ewq = ["789", "678", "567"]
     const qwe = ["890", ...ewq, "456"]
     const wer = qwe.find((bnm, asd) => bnm === "678")
-
-
-
-
     
 
     return(
         <div className="web-container">
             <Navbar/>
                 {/* //Welcome Widget */}
+
+
+
             <div className="content">
                 <div class="card  bg-light mb-3" style={{"max-width": "18rem;"}}>
                 <div class="card-header">Welcome to Puppy Finder Beta</div>
@@ -28,10 +27,41 @@ function Home(){
                     <p class="card-text">On PuppyFinder you can find, search and discover puppies that needs a home.</p>
                  </div>
              </div>  
-
              <div class="alert alert-warning alert_mv" role="alert">
                 To list or start a petition for adopting a puppy you must be registered <a href="#" class="alert-link">Click here to register</a>.
             </div>
+
+
+        <div class="card text-center poster">
+            <div class="card-header">
+             <span className="">
+                 <b>
+                 🐾 Post a Puppy 🐾
+                 </b>
+                </span>   
+            </div>
+        <div class="card-body">
+            {/* <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> */}
+
+            <div className="mv-on">
+                <input  className="form-control" placeholder="Name" />
+                <input  className="form-control" placeholder="Breed" />
+                <input  className="form-control" placeholder="Age" type="number" />
+                <input  className="form-control" placeholder="Lifespan" type="number" />
+                <input  className="form-control" placeholder="Country of Origin" type="text" />
+                {/* <label htmlFor="lol" className="age-f">age</label>
+                <input id="lol"   className="form-control age-f" type="date"/> */}
+            <li className="list-group-item">                
+                <button className="btn btn-warning ed-bs ed-s" > <b>Add</b> </button>
+                <button className="btn btn-warning ed-s"><b>Update</b></button>
+
+            </li>
+            </div>
+        </div>
+
+
+        </div>
 
 
             {/* //The puppy cards will be added here */}
@@ -42,10 +72,10 @@ function Home(){
                 <div className="row spacing">
                 {/* <div className="col white_spacing_up"> */}
 
-                <div className="card mv_up" style={{"width": "18rem"}}>
+                <div className="card mv_up" style={{"width": "15rem"}}>
                     <img src={pupImage} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
+                        <h5 className="card-title">Billo</h5>
                         <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     </div>
                     <ul className="list-group list-group-flush">
@@ -61,28 +91,8 @@ function Home(){
                     </div> */}
 
                 </div>
-
-
-
-
-      
-
-
-
-
                 </div>
-
-
-
-
-
-
             </div>
-
-
-
-
-
 
 
             <div>

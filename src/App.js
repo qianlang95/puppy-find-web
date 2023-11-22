@@ -11,6 +11,7 @@ import Home from './Home';
 
 
 
+
 function App(){
 
 
@@ -19,9 +20,13 @@ function App(){
       <div>
         {/* <h1>hello</h1> */}
         <Routes>
-          {/* <Route path='/'  /> */}
 
           <Route  path='/' element={<Home/>} />
+
+
+
+          {/* <Route path='/'  /> */}
+
 
         </Routes>
       </div>
