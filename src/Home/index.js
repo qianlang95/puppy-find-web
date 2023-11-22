@@ -45,11 +45,23 @@ function Home(){
             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> */}
 
             <div className="mv-on">
+
+                <div>
+                    <select className="form-select" aria-label="Default">
+                        <option selected>Choose type of puppy</option>
+                        <option value="cat">Cat</option>
+                        <option value="cat">Dog</option>
+
+
+                    </select>
+                </div>
+
                 <input  className="form-control" placeholder="Name" />
                 <input  className="form-control" placeholder="Breed" />
                 <input  className="form-control" placeholder="Age" type="number" />
-                <input  className="form-control" placeholder="Lifespan" type="number" />
+                {/* <input  className="form-control" placeholder="Lifespan" type="number" /> */}
                 <input  className="form-control" placeholder="Country of Origin" type="text" />
+
                 {/* <label htmlFor="lol" className="age-f">age</label>
                 <input id="lol"   className="form-control age-f" type="date"/> */}
             <li className="list-group-item">                

@@ -8,7 +8,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand navbar-light bg-light">
       <a className="navbar-brand nav-logo" href="#">        
-       Puppy Finder 🐶
+       Puppy Finder 🐶🐱
         </a>
 
       <ul className="navbar-nav post-edit">
