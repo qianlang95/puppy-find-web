@@ -4,6 +4,8 @@ import Navbar from "./Navbar/navbar"
 import FooterNav from "./Footer"
 import  pupImage from "./misc/english-springer-spaniel-dog-puppy-artistic-style-painting-drawing-cartoon-style-illustration-no-background-perfect-for-print-on-demand-merchandise-ai-generative-png-2610760852.png"
 
+import catImage from "./misc/catImage.jpg"
+
 import db from "../Database"
 
 function Home(){
@@ -90,12 +92,14 @@ function Home(){
 
 
                 <div className="card mv_up" style={{"width": "15rem"}}>
-                    <img src={pupImage} className="card-img-top" alt="..." />
+                    {/* <img src={pupImage} className="card-img-top" alt="..." /> */}
+                    <img src={pet.type === "dog" ? pupImage : catImage} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">{pet.name}</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p className="card-text">{pet.description}</p>
                     </div>
                     <ul className="list-group list-group-flush">
+                        <li className="list-group-item">Type: {pet.type}</li>
                         <li className="list-group-item">Breed: {pet.breed}</li>
                         <li className="list-group-item">Age: {pet.age}</li>
                         <li className="list-group-item">Location: {pet.location}</li>
