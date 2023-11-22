@@ -97,6 +97,7 @@ function Home(){
                 </div>
                 
                 <input  className="form-control" value={pet.name} onChange={(e) => setPet({...pet, name: e.target.value})} placeholder="Name" />
+                <input  className="form-control" value={pet.description} onChange={(e) => setPet({...pet, description: e.target.value})} placeholder="Description" />
                 <input  className="form-control" value={pet.breed} onChange={(e)=> setPet({...pet, breed: e.target.value})} placeholder="Breed" />
                 <input  className="form-control"  value={pet.age} onChange={(e) => setPet({...pet, age: e.target.value})} placeholder="Age" type="number" />
                 {/* <input  className="form-control" placeholder="Lifespan" type="number" /> */}
