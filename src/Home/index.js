@@ -4,12 +4,16 @@ import Navbar from "./Navbar/navbar"
 import FooterNav from "./Footer"
 import  pupImage from "./misc/english-springer-spaniel-dog-puppy-artistic-style-painting-drawing-cartoon-style-illustration-no-background-perfect-for-print-on-demand-merchandise-ai-generative-png-2610760852.png"
 
+import db from "../Database"
+
 function Home(){
 
 
     const ewq = ["789", "678", "567"]
     const qwe = ["890", ...ewq, "456"]
     const wer = qwe.find((bnm, asd) => bnm === "678")
+
+    const pets = db.pets;
     
 
     return(
@@ -55,11 +59,11 @@ function Home(){
 
                     </select>
                 </div>
-
+                
                 <input  className="form-control" placeholder="Name" />
                 <input  className="form-control" placeholder="Breed" />
                 <input  className="form-control" placeholder="Age" type="number" />
-                {/* <input  className="form-control" placeholder="Lifespan" type="number" /> */}
+                <input  className="form-control" placeholder="Lifespan" type="number" />
                 <input  className="form-control" placeholder="Country of Origin" type="text" />
 
                 {/* <label htmlFor="lol" className="age-f">age</label>
@@ -82,27 +86,27 @@ function Home(){
 
 
                 <div className="row spacing">
-                {/* <div className="col white_spacing_up"> */}
+                    {pets.map((pet) => (
+
 
                 <div className="card mv_up" style={{"width": "15rem"}}>
                     <img src={pupImage} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <h5 className="card-title">Billo</h5>
+                        <h5 className="card-title">{pet.name}</h5>
                         <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     </div>
                     <ul className="list-group list-group-flush">
-                        <li className="list-group-item">Breed: Spaniel</li>
-                        <li className="list-group-item">Age: 1 month</li>
-                        <li className="list-group-item">Location: San Jose, CA</li>
-                        {/* <li className="list-group-item">A third item</li> */}
+                        <li className="list-group-item">Breed: {pet.breed}</li>
+                        <li className="list-group-item">Age: {pet.age}</li>
+                        <li className="list-group-item">Location: {pet.location}</li>
+
                     </ul>
-
-                    {/* <div className="card-body">
-                        <a href="#" className="card-link">Card link</a>
-                        <a href="#" className="card-link">Another link</a>
-                    </div> */}
-
                 </div>
+
+
+                    ))}
+
+
                 </div>
             </div>
 
