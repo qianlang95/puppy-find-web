@@ -1,4 +1,5 @@
 
+import axios from "axios"
 import "./index.css"
 import Navbar from "./Navbar/navbar"
 import FooterNav from "./Footer"
@@ -10,7 +11,7 @@ import catImage from "./misc/catImage.jpg"
 
 
 import db from "../Database"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 function Home(){
     // const ewq = ["789", "678", "567"]
@@ -24,22 +25,43 @@ function Home(){
     //     name: "New Name", breed: "terrier", age:"2", location: "San Jose, CA", type: "dog",
     // })
 
-    const [pets, setPets] = useState(db.pets)
+    const URL = "http://localhost:4001/api/pets"
+
+    const [pets, setPets] = useState([])
     const [pet, setPet] = useState({
         name: "New Name", breed: "terrier", age:"2", location: "San Jose, CA", type: "dog",
     })
 
-    const addPet = () =>{
-        setPets([...pets, {...pet, _id: new Date().getTime().toString()}])
+
+    const fetchPuppies = async () => {
+        const response = await axios.get(URL);
+        setPets(response.data);   
     }
+
+    useEffect( () => {
+        fetchPuppies()
+    }, [] )
+
+    const addPet = async () => {
+        const response = await axios.post(URL, pet);
+        setPets([...pets, {...pet, _id: new Date().getTime().toString()}])
+
+    }
+
+    // const addPet = () =>{
+    //     setPets([...pets, {...pet, _id: new Date().getTime().toString()}])
+    // }
     
-    const deletePet = (petId) => {
+    const deletePet = async (petId) => {
         console.log(`about to delete  ${petId}`)
+        const response = await axios.delete(`${URL}/${petId}`)
         setPets(pets.filter( (pet) => pet._id !== petId ))
         console.log("succesfully deleted")
     }
     
-    const updatePet = () => {
+    const updatePet = async () => {
+        const response = await axios.put(`${URL}/${pet._id}`, pet)
+
         setPets(
             pets.map( (p) => {
                 if (p._id === pet._id ){
@@ -140,6 +162,10 @@ function Home(){
                         <li className="list-group-item">Location: {pet.location}</li>
 
                     </ul>
+
+                    <button className="btn btn-warning" onClick={ (event) => {event.preventDefault(); setPet(pet);  } }>Edit</button>
+
+
                     <button className="btn btn-danger"  onClick={(event) => {event.preventDefault(); deletePet(pet._id)}}>Delete Post</button>
                 </div>
 
