@@ -4,7 +4,7 @@ import "./index.css"
 import Navbar from "./Navbar/navbar"
 import FooterNav from "./Footer"
 import  pupImage from "./misc/english-springer-spaniel-dog-puppy-artistic-style-painting-drawing-cartoon-style-illustration-no-background-perfect-for-print-on-demand-merchandise-ai-generative-png-2610760852.png"
-
+import { Link } from "react-router-dom"
 import catImage from "./misc/catImage.jpg"
 
 // import * as client from "./client.js"
@@ -148,7 +148,10 @@ function Home(){
                     {/* <img src={pupImage} className="card-img-top" alt="..." /> */}
                     <img src={pet.type === "dog" ? pupImage : catImage} className="card-img-top" alt="..." />
                     <div className="card-body">
+                        <Link to={`/detail/${pet._id}`}>
+
                         <h5 className="card-title">{pet.name}</h5>
+                        </Link>
                         <p className="card-text">{pet.description}</p>
                     </div>
                     <ul className="list-group list-group-flush">
