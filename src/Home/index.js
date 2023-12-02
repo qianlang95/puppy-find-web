@@ -25,7 +25,7 @@ function Home(){
     //     name: "New Name", breed: "terrier", age:"2", location: "San Jose, CA", type: "dog",
     // })
 
-    const URL = "http://localhost:4001/api/pets"
+    const URL = `http://localhost:4001/api/pets`
 
     const [pets, setPets] = useState([])
     const [pet, setPet] = useState({
@@ -48,9 +48,7 @@ function Home(){
 
     }
 
-    // const addPet = () =>{
-    //     setPets([...pets, {...pet, _id: new Date().getTime().toString()}])
-    // }
+
     
     const deletePet = async (petId) => {
         console.log(`about to delete  ${petId}`)
@@ -77,8 +75,6 @@ function Home(){
     return(
         <div className="web-container">
             <Navbar/>
-                {/* //Welcome Widget */}
-
 
 
             <div className="content">

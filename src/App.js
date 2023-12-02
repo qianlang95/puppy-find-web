@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 import Home from './Home';
+import Detail from './Home/Detail/detail';
 
 
 
@@ -22,6 +23,7 @@ function App(){
         <Routes>
 
           <Route  path='/' element={<Home/>} />
+          <Route  path='/detail/:id' element={<Detail/>} />
 
 
 
