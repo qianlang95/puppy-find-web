@@ -47,6 +47,8 @@
 
 import axios from "axios";
 
+
+
 export const BASE_API= "http://localhost:4001"
 export const POSTS_API = `${BASE_API}/api/pets`;
 
@@ -63,13 +65,15 @@ export const findAllPosts = async (req,res) => {
     return response.data;
 }
 
-export const deletePost = async(petId) => {
-    console.log("Trying to delete", petId)
-    const response = await request.delete(`${POSTS_API}/${petId}`)
+export const deletePost = async(postId) => {
+    console.log("Trying to delete", postId)
+    const response = await request.delete(`${POSTS_API}/${postId}`)
     return response.data;
 }
 
 export const updatePost = async(post) => {
+    console.log(` #1 Trying to update ${post._id}`)
+    console.log(` #2 Trying to update ${JSON.stringify(post)}`)
     const response = await request.put(`${POSTS_API}/${post._id}`, post);
     return response.data;
 }

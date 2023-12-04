@@ -88,7 +88,9 @@ function Home(){
     }
 
     const updatePet = async () => {
+        
         try {
+            console.log("When updating thats :", pet)
             const status = await client.updatePost(pet);
             setPets(pets.map( (p) => (p._id === pet._id ? pet : p) ))
         } catch (error) {
