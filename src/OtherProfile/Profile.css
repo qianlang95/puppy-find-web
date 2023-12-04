@@ -1,0 +1,8 @@
+.avatar-image {
+    width: 150px; /* Define a fixed width */
+    height: 150px; /* Define the same fixed height to make it square */
+    object-fit: cover; /* Ensures the image covers the area and maintains its aspect ratio */
+    border-radius: 50%; /* Optional: Adds rounded corners to the image */
+    display: block; /* Changes display from inline to block, which can be useful for alignment */
+    margin: 0 auto; /* Additional centering for block elements if needed */
+  }

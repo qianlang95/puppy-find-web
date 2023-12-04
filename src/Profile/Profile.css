@@ -5,4 +5,36 @@
     border-radius: 50%; /* Optional: Adds rounded corners to the image */
     display: block; /* Changes display from inline to block, which can be useful for alignment */
     margin: 0 auto; /* Additional centering for block elements if needed */
-  }
+}
+
+.user-interactions-container {
+    display: flex;
+    justify-content: space-between; /* Adjusts the space between each component */
+}
+  
+.user-interactions-container > div {
+    flex: 1; /* Each child div will take equal width */
+    margin: 0 10px; /* Optional: Adds margin between the components */
+}
+
+.profile-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* This sets the height of the container to the full viewport height */
+}
+
+.user-info {
+  text-align: center; /* Aligns the text to the center */
+  /* Add more styling as needed */
+}
+
+.user-section {
+  text-align: center; /* Centers text and inline elements */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers block-level elements in flex container */
+  margin-bottom: 20px; /* Optional: Adds space below each section */
+}
+
+  
