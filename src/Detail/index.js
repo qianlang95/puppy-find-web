@@ -6,6 +6,17 @@ import axios from "axios";
 import db from "../Database";
 
 function Detail() {
+  const [user, setUser] = useState(
+    {
+    userId:"3",
+    userName:"qian"});
+
+
+  const [like, setLike] = useState()
+
+
+
+  
 
 
   // const api_key = "live_VhxuToewoxo0lvQyDgnvHuMaP5ZxMBKt5kqWZ1qKkvjuVMcTwGUaQfWxCdRwJtcV"
@@ -20,8 +31,17 @@ function Detail() {
     const [imgId, setImgId] = useState("");
     const cat_url = `https://api.thecatapi.com/v1/breeds/${breedId}`;
     const dog_url = `https://api.thedogapi.com/v1/breeds/${breedId}`;
+    const puppy_server_url = 'http://localhost:4002/api';
 
     const [searchResults, setSearchResults] = useState();
+
+
+    const [fun1, setFun1] = useState();
+
+    const [fun2, setFun2] = useState();
+    const [fun3, setFun3] = useState();
+    const [noFun, setNoFun] = useState();
+    const [usersLikes, setUsersLikes] = useState([]);
 
     const fetchBreeds = async () => {
     if (isIntegerString(breedId)){
@@ -42,6 +62,17 @@ function Detail() {
 
 
 }
+
+
+
+const fetchLikes = async () => {
+  
+
+      const response = await axios.get(`${puppy_server_url}/likes/${breedId}`);
+      setUsersLikes(response.data)
+}
+
+
 
 const isIntegerString = (str) => {
     // Trim the string
@@ -70,6 +101,55 @@ const isIntegerString = (str) => {
   }
 
 
+  const getFunFacts = async () => {
+  
+
+    if (isIntegerString(breedId)){
+
+      const response = await axios.get(`${puppy_server_url}/dogs/${breedId}`);
+
+      setFun1(response.data.funFact1);
+      setFun2(response.data.funFact2);
+      setFun3(response.data.funFact3);
+
+      if(!response.data.funFact1) {
+        setNoFun("oppps! no fun facts for this breed yet! But stay tuned!!")
+      }
+
+  }
+  else {
+    const response = await axios.get(`${puppy_server_url}/cats/${breedId}`);
+    setFun1(response.data.funFact1);
+    setFun2(response.data.funFact2);
+    setFun3(response.data.funFact3);
+    if(!response.data.funFact1) {
+      setNoFun("oppps! no fun facts for this breed yet! But stay tuned!!")
+    }
+
+  
+
+  }
+  
+
+}
+
+const likeReady = async () => {
+  const newLike = {...user, "breedId":breedId}
+  console.log("***********like!!!!!", newLike);
+  setLike(newLike);
+}
+
+
+
+const giveThumpUp = async () => {
+  console.log("***********press like1!!!!!");
+  const response = await axios.post(`${puppy_server_url}/like`, like);
+}
+
+
+
+
+
 
 
 
@@ -77,6 +157,8 @@ const isIntegerString = (str) => {
 useEffect(() => {
 
     fetchBreeds();
+    fetchLikes();
+    likeReady();
     console.log("*******************3");
     console.log(searchResults,"searchResults");
     // return () => {controller.abort();}
@@ -216,11 +298,38 @@ useEffect(() => {
                   
 
 
-                    {isCheckForMore && (<pre>{JSON.stringify(searchResults, null, 2)}</pre>)}
+                    {/* {isCheckForMore && (<pre>{JSON.stringify(searchResults, null, 2)}</pre>)} */}
 
 
                                         {/* <button className="btn btn-success" onClick={setCheck(true)}>
                       Check for more in Json Format</button> */}
+                      <button onClick={getFunFacts} className="btn btn-success w-50">check fun fact</button>
+                      {fun1 && <h4>{fun1}</h4>}
+                      {fun2 && <h4>{fun2}</h4>}
+                      {fun3 && <h4>{fun3}</h4>}
+                      {noFun && <h4>{noFun}</h4>}
+
+                      <br/>
+
+                      {usersLikes[0] && <h2>The likes are from these users:</h2>}
+                      
+                      {/* {usersLikes && (<pre>{JSON.stringify(usersLikes, null, 2)}</pre>)} */}
+
+                      {usersLikes && <div className="list-group"> 
+                    {usersLikes.map((like) => ( 
+                    <Link key={like._id} to={`/users/`} className="list-group-item"> 
+                    {like.userId}<br/>
+                    {like.userName} 
+                    </Link> ))} 
+                </div>
+                    
+                    }
+                    <button className="btn btn-primary" onClick={giveThumpUp} >Like!</button>
+
+
+                    
+
+
 
 
                   </div>

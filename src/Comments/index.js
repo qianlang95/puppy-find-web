@@ -7,21 +7,18 @@ function Comments({postId}) {
     console.log(postId,"!!!!!!!!!1")
     const [errorMessage, setErrorMessage] = useState(null);
 
-    const API = "http://localhost:4002/comments";
+    const API = "http://localhost:4002/api/comments";
     const [comment, setComment] = useState({
-        id: 1,
-        author: "the current login author", 
-        authorProfile: "xxxx",
-        description: "Create a cute puppy comment here...!",
-        postId:postId
+      userId: 8,
+      userName: "Sammmm",
+      description: "This is a cute puppy!",
+      postId:2
       });
 
     const [comments, setComments] = useState([{
-        id: 1,
-        author: "Sam",
-        authorProfile: "xxxx",
+        userId: 1,
+        userName: "Sam",
         description: "This is a cute puppy!",
-        completed: false,
         postId:1
       }]);
 
@@ -44,10 +41,10 @@ function Comments({postId}) {
 
       const deleteComment = async (comment) => {
         try {
-          console.log(`${API}/${comment.id}`, "delete!!!!!!!!!!!!!!!!!!!")
-        const response = await axios.delete((`${API}/${comment.id}`));
+          console.log(`${API}/${comment._id}`, "delete!!!!!!!!!!!!!!!!!!!")
+        const response = await axios.delete((`${API}/${comment._id}`));
 
-        setComments(comments.filter((t) => t.id !== comment.id));
+        setComments(comments.filter((t) => t._id !== comment._id));
     } catch (error) {
         console.log(error);
         setErrorMessage(error.response.data.message);
@@ -102,7 +99,7 @@ function Comments({postId}) {
                     onClick={()=>deleteComment(comment)}>
                     Remove
                   </button>
-            {comment.author}
+            {comment.userName}
             <a href={`${comment.authorProfile}`}
             className="btn btn-success me-2">
             go to profile
