@@ -33,10 +33,7 @@ function Home(){
     })
 
 
-    // const fetchPuppies = async () => {
-    //     const response = await axios.get(URL);
-    //     setPets(response.data);   
-    // }
+
 
     const fetchPuppies = async () => {
         const puppies = await client.findAllPosts();
@@ -51,11 +48,7 @@ function Home(){
         console.log(pets)
     }, [pets] )
 
-    // const addPet = async () => {
-    //     const response = await axios.post(URL, pet);
-    //     setPets([...pets, {...pet, _id: new Date().getTime().toString()}])
 
-    // }
 
     const addPost = async () => {
         try {
@@ -68,13 +61,7 @@ function Home(){
     }
 
 
-    
-    // const deletePet = async (petId) => {
-    //     console.log(`about to delete  ${petId}`)
-    //     const response = await axios.delete(`${URL}/${petId}`)
-    //     setPets(pets.filter( (pet) => pet._id !== petId ))
-    //     console.log("succesfully deleted")
-    // }
+
 
     const deletePet = async (petId) => {
         console.log("Trying to delete", petId)
@@ -88,7 +75,7 @@ function Home(){
     }
 
     const updatePet = async () => {
-        
+
         try {
             console.log("When updating thats :", pet)
             const status = await client.updatePost(pet);
@@ -101,20 +88,7 @@ function Home(){
 
 
     
-    // const updatePet = async () => {
-    //     const response = await axios.put(`${URL}/${pet._id}`, pet)
 
-    //     setPets(
-    //         pets.map( (p) => {
-    //             if (p._id === pet._id ){
-    //                 return pet;
-    //             }else{
-    //                 return p;
-    //             }
-    //         })
-    //     )
-    // }
-    
 
     return(
         <div className="web-container">
