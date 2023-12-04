@@ -6,7 +6,7 @@ import FooterNav from "./Footer"
 import  pupImage from "./misc/english-springer-spaniel-dog-puppy-artistic-style-painting-drawing-cartoon-style-illustration-no-background-perfect-for-print-on-demand-merchandise-ai-generative-png-2610760852.png"
 import { Link } from "react-router-dom"
 import catImage from "./misc/catImage.jpg"
-
+import * as client from "./client"
 // import * as client from "./client.js"
 
 
@@ -33,43 +33,85 @@ function Home(){
     })
 
 
+    // const fetchPuppies = async () => {
+    //     const response = await axios.get(URL);
+    //     setPets(response.data);   
+    // }
+
     const fetchPuppies = async () => {
-        const response = await axios.get(URL);
-        setPets(response.data);   
+        const puppies = await client.findAllPosts();
+        setPets(puppies)
     }
 
     useEffect( () => {
         fetchPuppies()
     }, [] )
 
-    const addPet = async () => {
-        const response = await axios.post(URL, pet);
-        setPets([...pets, {...pet, _id: new Date().getTime().toString()}])
+    useEffect( () => {
+        console.log(pets)
+    }, [pets] )
 
+    // const addPet = async () => {
+    //     const response = await axios.post(URL, pet);
+    //     setPets([...pets, {...pet, _id: new Date().getTime().toString()}])
+
+    // }
+
+    const addPost = async () => {
+        try {
+            const newPost = await client.createPost(pet);
+            setPets([newPost,...pets])
+        } catch (error) {
+            console.log(error);
+            
+        }
     }
 
 
     
+    // const deletePet = async (petId) => {
+    //     console.log(`about to delete  ${petId}`)
+    //     const response = await axios.delete(`${URL}/${petId}`)
+    //     setPets(pets.filter( (pet) => pet._id !== petId ))
+    //     console.log("succesfully deleted")
+    // }
+
     const deletePet = async (petId) => {
-        console.log(`about to delete  ${petId}`)
-        const response = await axios.delete(`${URL}/${petId}`)
-        setPets(pets.filter( (pet) => pet._id !== petId ))
-        console.log("succesfully deleted")
+        console.log("Trying to delete", petId)
+        try {
+            await client.deletePost(petId);
+            // setPets(pets.map( (p) => (p._id === pet._id ? pet : p) ))
+            setPets(pets.filter( (p)=> p._id !== petId ))
+        } catch (error) {
+            console.log(error)
+        }
     }
-    
-    const updatePet = async () => {
-        const response = await axios.put(`${URL}/${pet._id}`, pet)
 
-        setPets(
-            pets.map( (p) => {
-                if (p._id === pet._id ){
-                    return pet;
-                }else{
-                    return p;
-                }
-            })
-        )
+    const updatePet = async () => {
+        try {
+            const status = await client.updatePost(pet);
+            setPets(pets.map( (p) => (p._id === pet._id ? pet : p) ))
+        } catch (error) {
+            console.log(error)
+            
+        }
     }
+
+
+    
+    // const updatePet = async () => {
+    //     const response = await axios.put(`${URL}/${pet._id}`, pet)
+
+    //     setPets(
+    //         pets.map( (p) => {
+    //             if (p._id === pet._id ){
+    //                 return pet;
+    //             }else{
+    //                 return p;
+    //             }
+    //         })
+    //     )
+    // }
     
 
     return(
@@ -124,7 +166,7 @@ function Home(){
                 {/* <label htmlFor="lol" className="age-f">age</label>
                 <input id="lol"   className="form-control age-f" type="date"/> */}
             <li className="list-group-item">                
-                <button className="btn btn-warning ed-bs ed-s" onClick={addPet} > <b>Add</b> </button>
+                <button className="btn btn-warning ed-bs ed-s" onClick={addPost} > <b>Add</b> </button>
                 <button className="btn btn-warning ed-s" onClick={updatePet}><b>Update</b></button>
 
             </li>
@@ -144,7 +186,7 @@ function Home(){
                     {pets.map((pet) => (
 
 
-                        <div className="card mv_up" style={{"width": "15rem"}}>
+                        <div key={pet._id} className="card mv_up" style={{"width": "15rem"}}>
                     {/* <img src={pupImage} className="card-img-top" alt="..." /> */}
                     <img src={pet.type === "dog" ? pupImage : catImage} className="card-img-top" alt="..." />
                     <div className="card-body">
