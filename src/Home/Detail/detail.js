@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 
 function Detail(){
     const {id} = useParams();
-    const [pet, setPet] = useState({name: "New Name", breed: "terrier", age:"2", location: "San Jose, CA", type: "dog",});
+    const [pet, setPet] = useState({});
 
     const findPetById = async(id) => {
         const pet = await client.findPetById(id);
