@@ -4,7 +4,7 @@ const request = axios.create({
   });
   
 // export const BASE_API = process.env.REACT_APP_BASE_API_URL;
-export const BASE_API = "puppy-find-node-server.onrender.com/";
+export const BASE_API = "https://puppy-find-node-server.onrender.com";
 
 export const USERS_API = `${BASE_API}/api/users`;
 
