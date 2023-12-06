@@ -22,7 +22,7 @@ function Admin() {
 
     const fetchBreeds = async () => {
         const response = await axios.get(`${API_DOMAIN}/breedsLimit`);
-        console.log("******",response.data);
+        console.log("*****",response.data);
         
 
         setBreeds(response.data);
