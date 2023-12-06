@@ -5,6 +5,13 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Home from './Home';
 import Detail from './Home/Detail/detail';
+import Signin from './users/signin';
+import Account from './users/account';
+import Signup from './users/signup';
+import store from "./users/store"
+import { Provider } from 'react-redux';
+
+
 
 
 
@@ -15,12 +22,17 @@ function App(){
 
 
   return(
+    <Provider store={store}>
+
     <HashRouter>
       <div>
         {/* <h1>hello</h1> */}
         <Routes>
 
           <Route  path='/' element={<Home/>} />
+          <Route  path='/signin' element={<Signin/>} />
+          <Route  path='/signup' element={<Signup/>} />
+          <Route  path='/account' element={<Account/>} />
           {/* //change to postiD */}
           <Route  path='/detail/:id' element={<Detail/>} />
 
@@ -32,6 +44,7 @@ function App(){
         </Routes>
       </div>
     </HashRouter>
+    </Provider>
   );
 }
 
