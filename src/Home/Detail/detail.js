@@ -7,7 +7,7 @@ import Navbar from "../Navbar/navbar";
 import FooterNav from "../Footer";
 import "../Detail/v1008-35.jpg"
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 
 
 
@@ -15,6 +15,7 @@ import { useParams } from "react-router-dom";
 function Detail(){
     const {id} = useParams();
     const [pet, setPet] = useState({});
+
 
 
     const findPetById = async(id) => {
