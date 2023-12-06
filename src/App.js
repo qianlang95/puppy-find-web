@@ -3,8 +3,6 @@ import './App.css';
 import {HashRouter} from "react-router-dom";
 import { Routes, Route, Navigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
-
-
 import Home from './Home';
 import Detail from './Home/Detail/detail';
 
