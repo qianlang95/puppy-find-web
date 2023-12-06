@@ -1,6 +1,7 @@
 
 import axios from "axios"
 import "./index.css"
+
 import Navbar from "./Navbar/navbar"
 import FooterNav from "./Footer"
 import  pupImage from "./misc/english-springer-spaniel-dog-puppy-artistic-style-painting-drawing-cartoon-style-illustration-no-background-perfect-for-print-on-demand-merchandise-ai-generative-png-2610760852.png"

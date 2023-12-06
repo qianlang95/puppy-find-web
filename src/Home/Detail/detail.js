@@ -1,4 +1,7 @@
 import "../Detail/detail.css"
+// import "../Detail/dummy.css"
+
+
 import * as client from "./client"
 import Navbar from "../Navbar/navbar";
 import FooterNav from "../Footer";
@@ -6,9 +9,13 @@ import "../Detail/v1008-35.jpg"
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+
+
+
 function Detail(){
     const {id} = useParams();
     const [pet, setPet] = useState({});
+
 
     const findPetById = async(id) => {
         const pet = await client.findPetById(id);
@@ -48,6 +55,8 @@ function Detail(){
 
 
             </div>
+
+
 
 
 

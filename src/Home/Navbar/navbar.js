@@ -3,8 +3,15 @@
 import { NavLink } from "react-router-dom";
 import "./index.css"
 import "./pet-bg.jpg"
+import { useParams, useLocation } from "react-router-dom";
+
+
 
 function Navbar() {
+  const {pathname} = useLocation();
+  const path = pathname.split('/')
+  console.log("check here" , path[1])
+
   return (
     <nav className="navbar navbar-expand navbar-light bg-light">
       <a className="navbar-brand nav-logo" href="#">        
@@ -14,7 +21,7 @@ function Navbar() {
       <ul className="navbar-nav post-edit">
 
         <li className="nav-item post-edit2">
-        <li className="nav-item"><NavLink className="nav-link btn btn-warning nav-pos " to="/">🔎 Search</NavLink></li>  
+        <li className="nav-item"><NavLink className={`nav-link btn btn-warning nav-pos ${path[1].includes("detail") ? "btn-ultra":""  }  `} to="/">🔎 Search</NavLink></li>  
         </li>
 
 

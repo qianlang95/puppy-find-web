@@ -1,4 +1,9 @@
 
+.btn-ultra{
+  background-color: var(--bs-btn-active-bg);
+
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -54,7 +59,6 @@
 
   .nav-pos{
     border-radius: 20px;
-    /* background: url("./pet-bg.jpg") center repeat; */
     width: 200px !important;
   }
 
