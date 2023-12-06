@@ -7,7 +7,7 @@ function Post() {
 
 
     // const postId = useParams();
-    const postId = 3;
+    const postId = 2;
 
     return(
         <div>

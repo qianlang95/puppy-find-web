@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import db from "../Database"; 
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate} from "react-router-dom";
 import axios from "axios";
-
+import {BsSearch, BsFillCheckCircleFill, BsTrash3Fill, BsPlusCircleFill, BsPencil}
+  from "react-icons/bs";
 
 
 function Search() {
-    const breeds = db.breeds;
-    const [searchInput, setSearchInput] = useState("");
+    const { search } = useParams();
+    const [searchInput, setSearchInput] = useState(search || "");
     console.log(searchInput,"Input");
+    const navigate = useNavigate();
 
     const [showSearchResults, setShowSearchResults] = useState(false);
     const controller = new AbortController();
@@ -18,17 +19,20 @@ function Search() {
 const api_key = "DEMO_API_KEY"
 const [searchResults, setSearchResults] = useState([]);
 const fetchBreeds = async () => {
-    if (searchInput === "dog") {
+    if (search === "dog") {
         console.log("!!!!!!!!!!!1");
 
         const response = await axios.get(dog_url);
         setSearchResults(response.data);
-    } else if (searchInput === "cat") {
+        setSearchInput(search);
+    } else if (search === "cat") {
         console.log("!!!!!!!!!!!2");
         const response = await axios.get(cat_url);
         setSearchResults(response.data);
+        setSearchInput(search);
     } else {
         setSearchResults([{name:"you can only search dog or cat", id:""}]);
+        setSearchInput(search);
         console.log("!!!!!!!!!!!3");
 
     }
@@ -48,12 +52,15 @@ useEffect(() => {
     // }
 
     // getData();
+    if (search) {
     fetchBreeds();
     console.log("*******************4");
     console.log(searchResults,"searchResults");
     // return () => {controller.abort();}
+    }
+
     
-},[]);
+},[search]);
 
 
 
@@ -64,17 +71,31 @@ const handleSearch = () => {
 
 
     return(
-        <div>
-            <label for="search">Find your puppy here</label>
+        <div className="container mt-4">
+
+
+        <div className="search-container" style={{ display: 'flex', alignItems: 'center' }}>
+            <BsSearch style={{ marginRight: '10px' }} />
+            <label htmlFor="search" style={{ marginRight: '10px' }}>Explore breeds:</label>
             <input
                 id="search"
-             value={searchInput}
-             onChange={(e) => setSearchInput(e.target.value)}
+                value={searchInput}
+                placeholder="Enter cat or dog here"
+                onChange={(e) => setSearchInput(e.target.value)}
+                className="form-control w-50"  
             />
+            
+            <button
+                className="btn btn-danger me-2"
+                onClick={() => navigate(`/search/${searchInput}`)}
+                style={{ marginLeft: '10px' }}  
+            >
+                Search
+            </button>
+        </div>
+            
 
-            <button className="btn btn-danger"
-                    onClick={() => handleSearch()}
-            >Search!</button>
+            
 
 
 {/* <pre>{JSON.stringify(searchResults, null, 2)}</pre>
@@ -102,7 +123,7 @@ const handleSearch = () => {
                 <div className="list-group"> 
                     {searchResults.map((breed) => ( 
                     <Link key={breed.id} to={`/detail/${breed.id}`} className="list-group-item"> 
-                    {breed.id}<br/>
+                    {/* {breed.id}<br/> */}
                     {breed.name} 
                     </Link> ))} 
                 </div>

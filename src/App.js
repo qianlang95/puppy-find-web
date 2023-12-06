@@ -30,6 +30,8 @@ import Post from "./Post";
 import Comments from "./Comments";
 import {HashRouter} from "react-router-dom";
 import {Routes, Route, Navigate} from "react-router";
+// import "dotenv/config";
+import Admin from "./Admin";
 
 function App() {
   return (
@@ -39,12 +41,14 @@ function App() {
             <Route path="/"         element={<Navigate to="/search"/>}/>
 
             <Route path="/search"    element={<Search/>}/>
+            <Route path="/search/:search" element={<Search />} />
 
             <Route path="/detail/:breedId/*"    element={<Detail/>}/>
 
             <Route path="/post"    element={<Post/>}/>
 
-            {/* <Route path="/comments"    element={<Comments/>}/> */}
+            <Route path="/admin"    element={<Admin/>}/>
+
            
         </Routes>
 
