@@ -14,14 +14,8 @@ function Navbar() {
       <ul className="navbar-nav post-edit">
 
         <li className="nav-item post-edit2">
-            {/* <NavLink className="nav-link btn btn-warning embrio" to="/">
-            Adopt
-            </NavLink>
-            <NavLink className="nav-link btn btn-warning embrio" to="/">
-            List
-            </NavLink> */}
-            
-            </li>
+        <li className="nav-item"><NavLink className="nav-link btn btn-warning nav-pos " to="/">🔎 Search</NavLink></li>  
+        </li>
 
 
 
@@ -29,9 +23,14 @@ function Navbar() {
       </ul>
 
       <div className="action-users">
+
         <ul className="navbar-nav">
+
             <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/">Login</NavLink></li>
             <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/">Register</NavLink></li>
+            <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-acc" to="/">Hello, <b>@Mattia</b></NavLink></li>
+            <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-log" to="/"> <b>Logout</b> </NavLink></li>
+
             {/* //This will be visible only to the logged-in users  */}
             {/* <li className="nav-item"><NavLink className="nav-link" to="/">Account</NavLink></li> */}
             {/* <li className="nav-item"><NavLink className="nav-link" to="/">Settings</NavLink></li> */}

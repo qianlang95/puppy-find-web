@@ -23,6 +23,7 @@ function App(){
         <Routes>
 
           <Route  path='/' element={<Home/>} />
+          {/* //change to postiD */}
           <Route  path='/detail/:id' element={<Detail/>} />
 
 

@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 
-export const BASE_API= "http://localhost:4001"
+export const BASE_API= "http://localhost:4000"
 export const POSTS_API = `${BASE_API}/api/pets`;
 
 const request = axios.create({withCredentials:false})

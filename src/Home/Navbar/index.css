@@ -52,11 +52,44 @@
     border-radius: 20px;
   }
 
+  .nav-pos{
+    border-radius: 20px;
+    /* background: url("./pet-bg.jpg") center repeat; */
+    width: 200px !important;
+  }
+
   .nav-end{
     border-radius: 20px;
     margin-left: 10px;
     background: url("./pet-bg.jpg") center repeat;
     width: 90px;
+  }
+
+  .nav-log{
+    border-radius: 20px;
+    margin-left: 10px;
+    /* border-style: double  !important; */
+    border-style: ridge  !important;
+    border:3px;
+    border-color: bisque !important;
+    /* background: url("./pet-bg.jpg") center repeat; */
+    /* background: #a24f5e !important; */
+    background: #e63946 !important;
+
+    border-color: #c1121f !important;
+
+    width: 90px;
+  }
+
+
+
+  .nav-acc{
+    border-radius: 20px;
+    background: url("./pet-bg.jpg") center repeat;
+    width: 200px;
+    /* border:3px;
+    border-style: ridge;
+    border-color: bisque !important; */
   }
 
 /* .web-container {
