@@ -1,4 +1,4 @@
-
+import * as userClient from "../users/client.js"
 import axios from "axios"
 import "./index.css"
 
@@ -8,6 +8,7 @@ import  pupImage from "./misc/english-springer-spaniel-dog-puppy-artistic-style-
 import { Link } from "react-router-dom"
 import catImage from "./misc/catImage.jpg"
 import * as client from "./client"
+
 // import * as client from "./client.js"
 
 
@@ -26,13 +27,22 @@ function Home(){
     //     name: "New Name", breed: "terrier", age:"2", location: "San Jose, CA", type: "dog",
     // })
 
-    const URL = `http://localhost:4001/api/pets`
-
+    // const URL = `http://localhost:4001/api/pets`
+    const [account, setAccount] = useState(null);
     const [pets, setPets] = useState([])
     const [pet, setPet] = useState({
         name: "New Name", breed: "terrier", age:"2", location: "San Jose, CA", type: "dog",
     })
 
+    const fetchAccount = async() => {
+        try {
+            const user = await userClient.account();
+            setAccount(user)
+        } catch (error) {
+            console.error("Error in fetching the account", error)
+            
+        }
+    }
 
 
 
@@ -48,6 +58,14 @@ function Home(){
     useEffect( () => {
         console.log(pets)
     }, [pets] )
+
+    useEffect( () => {
+        fetchAccount();
+    }, [] )
+
+    useEffect( () => {
+        console.log("Account Info from HomePage: ", account)
+    }, [account] )
 
     const breedIdMaps = {
         "Affenpinscher": 1,
@@ -151,7 +169,8 @@ function Home(){
     const handeBreedId = (e) => {
         const breed = e.target.value;
         const breedId = breedIdMaps[breed];
-        setPet({...pet, breed: breed, breedId: breedId})
+        const userId = account.username;
+        setPet({...pet, breed: breed, breedId: breedId, userId: userId})
     }
 
 
@@ -352,6 +371,7 @@ function Home(){
                         <li className="list-group-item">Breed: {pet.breed}</li>
                         <li className="list-group-item">Age: {pet.age}</li>
                         <li className="list-group-item">Location: {pet.location}</li>
+                        <li className="list-group-item">userId: {pet.userId}</li>
 
                     </ul>
 
