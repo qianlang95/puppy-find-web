@@ -360,7 +360,7 @@ function Home(){
                     {/* <img src={pupImage} className="card-img-top" alt="..." /> */}
                     <img src={pet.type === "dog" ? pupImage : catImage} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <Link to={`/detail/${pet._id}`}>
+                        <Link to={`/post/${pet._id}`}>
 
                         <h5 className="card-title">{pet.name}</h5>
                         </Link>

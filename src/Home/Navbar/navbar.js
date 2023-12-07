@@ -51,7 +51,7 @@ function Navbar() {
       <ul className="navbar-nav post-edit">
 
         <li className="nav-item post-edit2">
-        <li className="nav-item"><NavLink className={`nav-link btn btn-warning nav-pos ${path[1].includes("detail") ? "btn-ultra":""  }  `} to="/">🔎 Search</NavLink></li>  
+        <li className="nav-item"><NavLink className={`nav-link btn btn-warning nav-pos ${path[1].includes("post") ? "btn-ultra":""  }  `} to="/">🔎 Search</NavLink></li>  
         </li>
 
 

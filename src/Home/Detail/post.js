@@ -12,7 +12,7 @@ import { useParams, useLocation } from "react-router-dom";
 
 
 
-function Detail(){
+function Post(){
     const {id} = useParams();
     const [pet, setPet] = useState({});
 
@@ -66,4 +66,4 @@ function Detail(){
     );
 }
 
-export default Detail;
+export default Post;

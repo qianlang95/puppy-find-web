@@ -4,7 +4,8 @@ import {HashRouter} from "react-router-dom";
 import { Routes, Route, Navigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Home from './Home';
-import Detail from './Home/Detail/detail';
+// import Detail from './Home/Detail/detail';
+import Post from './Home/Detail/post';
 import Signin from './users/signin';
 import Account from './users/account';
 import Signup from './users/signup';
@@ -37,7 +38,7 @@ function App(){
           <Route  path='/account' element={<Account/>} />
           <Route  path='/profile/:id' element={<UserDetails/>} />
           {/* //change to postiD */}
-          <Route  path='/detail/:id' element={<Detail/>} />
+          <Route  path='/post/:id' element={<Post/>} />
 
 
 
