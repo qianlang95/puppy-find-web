@@ -8,6 +8,7 @@ import Detail from './Home/Detail/detail';
 import Signin from './users/signin';
 import Account from './users/account';
 import Signup from './users/signup';
+import UserDetails from './users/details';
 import store from "./users/store"
 import { Provider } from 'react-redux';
 
@@ -34,6 +35,7 @@ function App(){
           <Route  path='/signin' element={<Signin/>} />
           <Route  path='/signup' element={<Signup/>} />
           <Route  path='/account' element={<Account/>} />
+          <Route  path='/profile/:id' element={<UserDetails/>} />
           {/* //change to postiD */}
           <Route  path='/detail/:id' element={<Detail/>} />
 

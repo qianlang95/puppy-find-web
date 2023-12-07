@@ -15,6 +15,10 @@ function Navbar() {
   const path = pathname.split('/')
   console.log("check here" , path[1])
 
+  function handleLogout(){
+    setAccount(null);
+  }
+
   const fetchAccount = async() => {
     try {
         const user = await client.account();
@@ -59,10 +63,28 @@ function Navbar() {
 
         <ul className="navbar-nav">
 
-            <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/">Login</NavLink></li>
-            <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/">Register</NavLink></li>
-            <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-acc" to="/">Hello, <b>{account.username}</b></NavLink></li>
-            <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-log" to="/"> <b>Logout</b> </NavLink></li>
+          {/* <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/">Login</NavLink></li>
+          <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/">Register</NavLink></li> */}
+
+          {account ? (
+            <ul className="navbar-nav">
+            <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-acc" to={`/profile/${account.id}`}>Hello, <b>{account.username}</b></NavLink></li>
+            <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/account"><b>Settings</b> </NavLink></li>
+
+            <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-log" to="/" onClick={handleLogout} > <b>Logout</b> </NavLink></li>
+            </ul>
+
+          ):(
+            <ul className="navbar-nav"> 
+                    <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/signin">Login</NavLink></li>
+                    <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/signup">Register</NavLink></li>
+            </ul>
+
+          )
+
+          
+          }
+
 
             {/* //This will be visible only to the logged-in users  */}
             {/* <li className="nav-item"><NavLink className="nav-link" to="/">Account</NavLink></li> */}
