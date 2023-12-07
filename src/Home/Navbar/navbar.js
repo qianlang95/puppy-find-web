@@ -1,11 +1,12 @@
 
 import * as client from "../../users/client.js"
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./index.css"
 import "./pet-bg.jpg"
 import { useParams, useLocation } from "react-router-dom";
 import { set } from "mongoose";
+import { Navigate } from "react-router-dom";
 
 
 
@@ -13,10 +14,17 @@ function Navbar() {
   const [account, setAccount] = useState(null);
   const {pathname} = useLocation();
   const path = pathname.split('/')
+  const navigate = useNavigate();
   console.log("check here" , path[1])
 
   function handleLogout(){
     setAccount(null);
+  }
+
+  const singout = async () => {
+    const status = await client.signout();
+    setAccount(null);
+    navigate("/");
   }
 
   const fetchAccount = async() => {
@@ -71,7 +79,7 @@ function Navbar() {
             <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-acc" to={`/profile/${account.id}`}>Hello, <b>{account.username}</b></NavLink></li>
             <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/account"><b>Settings</b> </NavLink></li>
 
-            <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-log" to="/" onClick={handleLogout} > <b>Logout</b> </NavLink></li>
+            <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-log" to="/" onClick={singout} > <b>Logout</b> </NavLink></li>
             </ul>
 
           ):(
