@@ -1,0 +1,77 @@
+.web-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* background: url("./pet-bg.jpg") center repeat; */
+    background: url("./misc/v1008-35.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.lol{
+    border: solid black
+}
+
+.moved{
+    margin-left: 7px ;
+}
+
+.spacing{
+    margin-left: 7px !important;
+}
+
+.white_spacing_up{
+    margin-top: 30px !important;
+    margin-bottom: 40px !important;
+}
+
+.mv_up{
+    margin-right: 10px;
+}
+
+.alert_mv{
+    margin-top: -15px;
+}
+
+.poster{
+    margin-bottom: 28px;
+    width: 700px;
+    margin: auto;
+    margin-top: -16px ;
+    background-color: rgb(246,240,234);
+    /* justify-content: flex-end; */
+}
+
+.btn-ed{
+    border-radius: 20px;
+
+}
+
+.btn-pos{
+    display: flex;
+    justify-content: center;
+}
+
+.age-f{
+    display: inline;
+}
+
+.ed-bs{
+    margin-left: 2px;
+    margin-right: 4px;
+}
+
+.ed-s{
+    width: 100px;
+    border-radius: 20px;
+}
+
+.mv-on{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* margin-left: 500px; */
+    width: 600px !important;
+    /* border: solid black; */
+    margin: auto;
+}

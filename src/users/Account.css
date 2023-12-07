@@ -1,0 +1,27 @@
+/* AccountStyles.css */
+.account-container {
+    background-color: #f9f9f9; /* 輕淺的背景色 */
+    border-radius: 8px; /* 圓角邊框 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 輕微的陰影效果 */
+}
+
+.account-header {
+    color: #333; /* 標題的顏色 */
+    font-weight: bold; /* 標題字體加粗 */
+}
+
+.account-card {
+    padding: 20px; /* 卡片內部的間距 */
+    background-color: white; /* 卡片的背景色 */
+}
+
+.account-form-group {
+    margin-bottom: 15px; /* 表單元素的間距 */
+}
+
+.account-button {
+    margin-right: 10px; /* 按鈕之間的間距 */
+    width: 100px; /* 按鈕寬度 */
+}
+
+/* 更多自定義樣式 */

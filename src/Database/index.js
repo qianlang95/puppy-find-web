@@ -1,5 +1,6 @@
-import breeds from "./cats.json"
 
-export default {
-  breeds,
-};
+import pets from "./pets.json"
+
+export default{
+    pets,
+}
