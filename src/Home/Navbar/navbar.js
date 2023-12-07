@@ -3,11 +3,21 @@
 import { NavLink } from "react-router-dom";
 import "./index.css"
 import "./pet-bg.jpg"
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
+import * as client from "../../users/client";
 
 
 
 function Navbar() {
+
+  const navigate = useNavigate();
+
+  const signout = async () => {
+    const status = await client.signout();
+    navigate("/login");
+  };
+
+
   const {pathname} = useLocation();
   const path = pathname.split('/')
   console.log("check here" , path[1])
@@ -33,10 +43,10 @@ function Navbar() {
 
         <ul className="navbar-nav">
 
-            <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/">Login</NavLink></li>
-            <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/">Register</NavLink></li>
-            <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-acc" to="/">Hello, <b>@Mattia</b></NavLink></li>
-            <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-log" to="/"> <b>Logout</b> </NavLink></li>
+            <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/login">Login</NavLink></li>
+            <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/register">Register</NavLink></li>
+            <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-acc" to="/account">Hello, <b>@Mattia</b></NavLink></li>
+            <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-log" onClick={signout}> <b>Logout</b> </NavLink></li>
 
             {/* //This will be visible only to the logged-in users  */}
             {/* <li className="nav-item"><NavLink className="nav-link" to="/">Account</NavLink></li> */}
