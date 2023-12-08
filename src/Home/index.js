@@ -247,9 +247,9 @@ function Home(){
 
                 <div>
                     <select className="form-select" aria-label="Default" onChange={(e)=> setPet({...pet, type: e.target.value})}>
-                        <option selected>Choose type of puppy</option>
-                        <option value="cat" >Cat</option>
-                        <option value="dog">Dog</option>
+                        {/* <option selected>Choose type of puppy</option> */}
+                        {/* <option value="cat" >Cat</option> */}
+                        <option selected value="dog">Dog</option>
 
 
                     </select>
@@ -349,7 +349,7 @@ function Home(){
             )}
 
 
-            {/* //The puppy cards will be added here */}
+            {/* Puppy Card Area  */}
 
             <div className="container-fluid flex-wrap moved">
 
@@ -358,7 +358,7 @@ function Home(){
                     {pets.map((pet) => (
 
 
-                        <div key={pet._id} className="card mv_up" style={{"width": "15rem"}}>
+                        <div key={pet._id} className="card mv_up" style={{"width": "14rem"}}>
                     {/* <img src={pupImage} className="card-img-top" alt="..." /> */}
                     <img src={pet.type === "dog" ? pupImage : catImage} className="card-img-top" alt="..." />
                     <div className="card-body">
@@ -373,6 +373,7 @@ function Home(){
                         <li className="list-group-item">Breed: {pet.breed}</li>
                         <li className="list-group-item">Age: {pet.age}</li>
                         <li className="list-group-item">Location: {pet.location}</li>
+                        <li className="list-group-item">Seller: </li>
                         {/* <li className="list-group-item">userId: {pet.userId}</li> */}
 
                     </ul>
@@ -380,8 +381,8 @@ function Home(){
 
                 {account && account._id === pet.userId  && (
                     <div className="btn-container">
-                        <button className="btn btn-warning mt-2" onClick={ (event) => {event.preventDefault(); setPet(pet);  } }>Edit</button>
-                        <button className="btn btn-danger mt-2"  onClick={(event) => {event.preventDefault(); deletePet(pet._id)}}>Delete Post</button>
+                        <button className="btn btn-warning mt-0 edit-mv" onClick={ (event) => {event.preventDefault(); setPet(pet);  } }>✏️ </button>
+                        <button className="btn btn-warning mt-0"  onClick={(event) => {event.preventDefault(); deletePet(pet._id)}}>❌</button>
                     </div>
 
                 )} 
