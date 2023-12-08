@@ -33,8 +33,8 @@ function App(){
         <Routes>
 
           <Route  path='/' element={<Home/>} />
-          <Route  path='/signin' element={<Signin/>} />
-          <Route  path='/signup' element={<Signup/>} />
+          <Route  path='/login' element={<Signin/>} />
+          <Route  path='/register' element={<Signup/>} />
           <Route  path='/account' element={<Account/>} />
           <Route  path='/profile/:id' element={<UserDetails/>} />
           {/* //change to postiD */}

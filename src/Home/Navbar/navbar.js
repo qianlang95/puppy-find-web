@@ -84,8 +84,8 @@ function Navbar() {
 
           ):(
             <ul className="navbar-nav"> 
-                    <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/signin">Login</NavLink></li>
-                    <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/signup">Register</NavLink></li>
+                    <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/login">Login</NavLink></li>
+                    <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/register">Register</NavLink></li>
             </ul>
 
           )

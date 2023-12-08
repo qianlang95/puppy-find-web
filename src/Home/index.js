@@ -160,7 +160,7 @@ function Home(){
     const handeBreedId = (e) => {
         const breed = e.target.value;
         const breedId = breedIdMaps[breed];
-        const userId = account.id;
+        const userId = account._id;
         setPet({...pet, breed: breed, breedId: breedId, userId: userId})
     }
 
