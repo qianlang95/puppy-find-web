@@ -1,8 +1,6 @@
 
 import Search from "./Search";
 import Detail from "./Detail";
-import Post from "./Post";
-import Comments from "./Comments";
 import {HashRouter} from "react-router-dom";
 import {Routes, Route, Navigate} from "react-router";
 // import "dotenv/config";
@@ -14,11 +12,12 @@ import Signup from "./users/signup";
 import UserDetails from "./users/details";
 import CurrentUser from "./users/currentUser";
 import Home from './Home';
-import Detail from './Home/Detail/detail';
+import Post from './Home/Detail/detail';
 import store from "./users/store";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from "./Navbar/navbar";
 
 
 
@@ -30,6 +29,7 @@ function App() {
       <Provider store={store}>
         <CurrentUser>
           <div>
+            <Navbar/>
             <Routes>
               <Route  path='/' element={<Home/>} />
               <Route path="/login" element={<Signin />} />
@@ -38,13 +38,13 @@ function App() {
               <Route path="/admin/users" element={<UserTable />} />
               <Route path="/account/:id" element={<Account />} />
               <Route path="/profile/:id" element={<UserDetails />} />
-              <Route  path='/detail/:id' element={<Detail/>} />
+              <Route  path='/post/:id' element={<Post/>} />
               <Route path="/search"    element={<Search/>}/>
             <Route path="/search/:search" element={<Search />} />
 
             <Route path="/detail/:breedId/*"    element={<Detail/>}/>
 
-            <Route path="/post"    element={<Post/>}/>
+            {/* <Route path="/post"    element={<Post/>}/> */}
 
             <Route path="/admin"    element={<Admin/>}/>
 

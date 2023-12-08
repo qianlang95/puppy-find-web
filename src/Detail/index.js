@@ -3,22 +3,29 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { FaHeart } from "react-icons/fa";
-import { ImCool } from "react-icons/im";
+import { useSelector } from "react-redux";
 
 import "./index.css";
 
 function Detail() {
+  const { currentUser } = useSelector((state) => state.userReducer);
+
   const [user, setUser] = useState(
+    );
+
+
+  const [like, setLike] = useState(
     {
-    userId:"3",
-    userName:"qian"});
+      "userId" : currentUser._id,
+      "userName" : currentUser.username
+    }
 
-
-  const [like, setLike] = useState()
+  )
   const [numberOfLikes, setNumberOfLikes] = useState();
 
 
 
+  const [postsForBreed, setPostsForBreed] = useState();
 
   
 
@@ -151,7 +158,7 @@ const isIntegerString = (str) => {
 }
 
 const likeReady = async () => {
-  const newLike = {...user, "breedId":breedId}
+  const newLike = {...like, "breedId":breedId}
   console.log("***********like!!!!!", newLike);
   setLike(newLike);
 }
@@ -164,6 +171,10 @@ const giveThumpUp = async () => {
 }
 
 
+const fetchPost = async () => {
+  const response = await axios.get(`${puppy_server_url}/posts/breed/${breedId}`);
+  setPostsForBreed(response.data);
+}
 
 
 
@@ -174,11 +185,15 @@ const giveThumpUp = async () => {
 useEffect(() => {
 
     fetchBreeds();
-    fetchLikes();
+   
     likeReady();
+    if (isIntegerString(breedId))
+    {fetchPost();
+      }
+      fetchLikes();
+    
     console.log("*******************3");
     console.log(searchResults,"searchResults");
-    // return () => {controller.abort();}
 },[]);
 
 
@@ -193,14 +208,7 @@ useEffect(() => {
 
                   {isCat && (
                     <table class="table table-striped">
-                    {/* <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                      </tr>
-                    </thead> */}
 
-                  {/* cat's detail */}
 
                   
 
@@ -222,9 +230,6 @@ useEffect(() => {
         {noFun && <h7>{noFun}</h7>}
       </div>
     </div>
-
-
-
 
 
 
@@ -287,11 +292,6 @@ useEffect(() => {
                     
 
 
-                     {/* <img
-                  src={`https://cdn2.thedogapi.com/images/${searchResults.reference_image_id}.jpg`}
-                  alt={searchResults.name}
-                  className="img-thumbnail custom-image"
-                /> */}
  <div class="container mt-3">
     <div class="row">
       <div class="col-md-6">
@@ -311,10 +311,6 @@ useEffect(() => {
       </div>
     </div>
   </div>
-
-
-
-
 
                       <tbody>
                         <tr>
@@ -360,67 +356,60 @@ useEffect(() => {
                   </table>
 
                   
-                  )}
+                  )
                   
                   
-
-
-                    {/* {isCheckForMore && (<pre>{JSON.stringify(searchResults, null, 2)}</pre>)} */}
-
-
-                                        {/* <button className="btn btn-success" onClick={setCheck(true)}>
-                      Check for more in Json Format</button> */}
+                  }
+                  
+                  
                       
-                      
-
                       <br/>
                       
-                      {/* <button className="btn btn-primary" onClick={giveThumpUp} >Like!</button> */}
                       <div>
 
                       <button className="btn"><FaHeart style={{ marginRight: '10px', fontSize: '75px', color: 'pink' }}
                       onClick={giveThumpUp}></FaHeart></button>
                       {numberOfLikes} likes
 
-                      {/* {usersLikes[0] && <p>Likes are from users:</p>} */}
-                      
-                      {/* {usersLikes && (<pre>{JSON.stringify(usersLikes, null, 2)}</pre>)} */}
 
                         {usersLikes && (
                           
                           <div className="likes-list">
                             <p>Likes are from users:</p>
                             {usersLikes.map((like) => (
-                              <Link key={like._id} to={`/users/`} className="list-group-item">
-                                {/* {like.userId}<br/> */}
+                              <Link key={like._id} to={
+                                like.userId === currentUser._id
+                                ? `/account/${like.userId}`
+                                : `/profile/${like.userId}`
+                                
+                                } className="list-group-item">
                                 {like.userName}
                               </Link>
                             ))}
                           </div>
                         )}
+
+                        <br/>
+
+                      {postsForBreed && !isCat&& (
+                          
+                          <div className="list-group">
+                            <p>These are the posts for this breed:</p>
+                            {postsForBreed.map((post) => (
+                              <Link key={post._id} to={`/post/${post._id}`} className="list-group-item">
+                                Post for Puppy: {post.name}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
                         
-                        
-                        
-                
                        </div>
+
+                        {/* <pre>{JSON.stringify(postsForBreed, null, 2)}</pre> */}
 
   
 
-
-
-                    
-                    
-
-
-
-                    
-
-
-
-
-                  </div>
-
-                
+                  </div>           
                 )
               } 
 

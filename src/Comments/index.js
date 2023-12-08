@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./style.css";
+import { useSelector } from "react-redux";
+
 
 function Comments({postId}) {
+  const { currentUser } = useSelector((state) => state.userReducer);
+
     console.log(postId,"!!!!!!!!!1")
     const [errorMessage, setErrorMessage] = useState(null);
 
@@ -21,9 +25,9 @@ function Comments({postId}) {
 
     const [comment, setComment] = useState({
 "description":"",
-"userId":"1",
-"userName":"lisa",
-"postId":"2"
+"userId": currentUser._id,
+"userName":currentUser.username,
+"postId":postId
     });
 
     const [comments, setComments] = useState([]);
@@ -101,81 +105,92 @@ function Comments({postId}) {
 
     return (
       <div className="container mt-4">
-
-        {/* <textarea
-        onChange={(e) => setComment({ ...comment,
-          description: e.target.value })}
-          placeholder="create your comment here..."
-        value={comment.description} 
-        type="text"
-        className="form-control"
-      />
-        <button 
-              onClick={()=> postComment()}
-              className="btn btn-primary mb-2 me-2">
-          Create a comment
-        </button>
-
-        <button 
-              onClick={()=> updateComment()}
-              className="btn btn-info mb-2 me-2">
-          update a comment
-        </button> */}
-
-<div>
-  <textarea
-    onChange={(e) => setComment({ ...comment, description: e.target.value })}
-    placeholder="Create your comment here..."
-    value={comment.description}
-    type="text"
-    className="form-control mb-3"
-    rows={7} // Adjust the number of rows as needed
-    style={{ width: '100%' }} // Set the width to 100% for responsiveness
-  />
-
-  <button
-    onClick={() => postComment()}
-    className="btn btn-primary mb-2 me-2">
-    Create a comment
-  </button>
-
-  <button
-    onClick={() => updateComment()}
-    className="btn btn-info mb-2">
-    Update a comment
-  </button>
-</div>
+         {currentUser && (
+      
+      
+                <div>
 
 
-        <ul className="list-group">
-        {comments.map((comment) => (
-          
-          <li key={comment.id}
-              className="list-group-item">
-                  <button
-                    className="btn btn-danger btn-sm float-end"
-                    onClick={()=>deleteComment(comment)}>
-                    Remove
-                  </button>
 
-                  <button className="btn btn-warning me-2 float-end btn-sm" onClick={() => selectComment(comment)}>
-                    select comment
-                  </button>
-                  <div>
-                  <span className="me-2 custom-font-size" >{comment.userName}</span>
-    <a href={`${comment.authorProfile}`} className="btn btn-success btn-sm me-2 ml-2">
-      Go to Profile
-    </a>
-    
-  </div>
-            <br/>
-            {comment.description}
-          </li>
-        ))}
-      </ul>
+                    <div>
+                    {currentUser.role === "buyer" && (
+                      <textarea
+                        onChange={(e) => setComment({ ...comment, description: e.target.value })}
+                        placeholder="Create your comment here..."
+                        value={comment.description}
+                        type="text"
+                        className="form-control mb-3"
+                        rows={7} // Adjust the number of rows as needed
+                        style={{ width: '100%' }} // Set the width to 100% for responsiveness
+                      />)}
 
 
-      </div>
+                      {currentUser.role === "buyer" && (
+
+                      <button
+                        onClick={() => postComment()}
+                        className="btn btn-primary mb-2 me-2">
+                        Create a comment
+                      </button>
+                      )}
+
+                      {currentUser.role === "buyer" && (
+
+                      <button
+                        onClick={() => updateComment()}
+                        className="btn btn-info mb-2">
+                        Update a comment
+                      </button>)}
+                      
+                    </div>
+
+
+                    <div>
+
+
+                              <ul className="list-group">
+                              {comments.map((comment) => (
+                                
+                                <li key={comment.id}
+                                    className="list-group-item">
+                                      {(comment.userId === currentUser._id || currentUser.role === "admin")&&(
+                                        <button
+                                          className="btn btn-danger btn-sm float-end"
+                                          onClick={()=>deleteComment(comment)}>
+                                          Remove
+                                        </button>
+                                      )}
+
+                                        {currentUser.role === "buyer" && comment.userId === currentUser._id &&(
+
+                                        <button className="btn btn-warning me-2 float-end btn-sm" onClick={() => selectComment(comment)}>
+                                          select comment
+                                        </button>
+                                        )}
+                                        <div>
+                                        <span className="me-2 custom-font-size" >{comment.userName}</span>
+                          <a  href={
+                          comment.userId === currentUser._id
+                            ? `/account/${comment.userId}`
+                            : `/profile/${comment.userId}`
+                        } 
+                        
+                          className="btn btn-success btn-sm me-2 ml-2">
+                            Go to Profile
+                          </a>
+                          
+                        </div>
+                                  <br/>
+                                  {comment.description}
+                                </li>
+                              ))}
+                            </ul>
+
+                </div>
+
+                </div>)}
+
+                </div>
     );
   }
   export default Comments;
