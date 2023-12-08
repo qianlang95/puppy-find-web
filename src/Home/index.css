@@ -34,6 +34,13 @@
     margin-top: -15px;
 }
 
+.love{
+    border:solid rgb(224, 86, 86);
+    height: 38px;
+    width: 46px;
+    border-radius: 21px;
+}
+
 .poster{
     margin-bottom: 28px;
     width: 700px;

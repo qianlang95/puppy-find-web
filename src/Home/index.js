@@ -373,7 +373,19 @@ function Home(){
                         <li className="list-group-item">Breed: {pet.breed}</li>
                         <li className="list-group-item">Age: {pet.age}</li>
                         <li className="list-group-item">Location: {pet.location}</li>
-                        <li className="list-group-item">Seller: </li>
+                    {account && account._id !== pet.userId && (
+                        <div>
+                        <ul className="list-group list-group-flush">
+                        <li className="list-group-item ">
+                            <button className=" btn btn-warning love">🩶</button>
+                        </li>
+
+                        </ul>
+
+                        </div>
+
+
+                    ) }
                         {/* <li className="list-group-item">userId: {pet.userId}</li> */}
 
                     </ul>
