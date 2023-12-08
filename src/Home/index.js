@@ -229,6 +229,7 @@ function Home(){
 
              )}
 
+            {account && account.role === "seller" && (
 
         <div class="card text-center poster">
             <div class="card-header">
@@ -345,6 +346,9 @@ function Home(){
         </div>
 
 
+            )}
+
+
             {/* //The puppy cards will be added here */}
 
             <div className="container-fluid flex-wrap moved">
@@ -369,14 +373,20 @@ function Home(){
                         <li className="list-group-item">Breed: {pet.breed}</li>
                         <li className="list-group-item">Age: {pet.age}</li>
                         <li className="list-group-item">Location: {pet.location}</li>
-                        <li className="list-group-item">userId: {pet.userId}</li>
+                        {/* <li className="list-group-item">userId: {pet.userId}</li> */}
 
                     </ul>
 
-                    <button className="btn btn-warning" onClick={ (event) => {event.preventDefault(); setPet(pet);  } }>Edit</button>
+
+                {account && account._id === pet.userId  && (
+                    <div className="btn-container">
+                        <button className="btn btn-warning mt-2" onClick={ (event) => {event.preventDefault(); setPet(pet);  } }>Edit</button>
+                        <button className="btn btn-danger mt-2"  onClick={(event) => {event.preventDefault(); deletePet(pet._id)}}>Delete Post</button>
+                    </div>
+
+                )} 
 
 
-                    <button className="btn btn-danger"  onClick={(event) => {event.preventDefault(); deletePet(pet._id)}}>Delete Post</button>
                 </div>
 
 
