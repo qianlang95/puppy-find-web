@@ -9,6 +9,7 @@ import Post from './Home/Detail/post';
 import Signin from './users/signin';
 import Account from './users/account';
 import Signup from './users/signup';
+import About from './Home/About/about';
 import UserDetails from './users/details';
 import store from "./users/store"
 import { Provider } from 'react-redux';
@@ -39,6 +40,7 @@ function App(){
           <Route  path='/profile/:id' element={<UserDetails/>} />
           {/* //change to postiD */}
           <Route  path='/post/:id' element={<Post/>} />
+          <Route  path='/about' element={<About/>} />
 
 
 

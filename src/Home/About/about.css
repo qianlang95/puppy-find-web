@@ -1,0 +1,22 @@
+.web-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* background: url("./pet-bg.jpg") center repeat; */
+    background: url("./v1008-35.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.content {
+    flex: 2;
+    /* border: solid; */
+}
+
+.acc-cointaner{
+    /* border:solid black; */
+    border: 2px !important;
+    border-radius: 20% !important;
+    width: 50rem;
+    margin: auto;
+}
