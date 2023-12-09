@@ -3,8 +3,11 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import './Account.css';
+import Navbar from "../Home/Navbar/navbar";
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "./reducer";
+import FooterNav from "../Home/Footer";
+
 
 function Account() {
   const { currentUser } = useSelector((state) => state.userReducer);
@@ -23,9 +26,11 @@ function Account() {
 
   const save = async () => {
     await client.updateUser(editAccount);
-    setAccount(editAccount); 
-    setIsEditMode(false); 
+    setAccount(editAccount);
+    setIsEditMode(false);
   };
+  
+  
 
   const findUserById = async (userId) => {
     const user = await client.findUserById(userId);
@@ -49,26 +54,35 @@ function Account() {
   };
 
   const cancelEdit = () => {
-    setEditAccount(account); // Reset editAccount to the original account state
-    setIsEditMode(false); // Exit edit mode without saving
+    setEditAccount(account); 
+    setIsEditMode(false); 
   };
 
   useEffect(() => {
-    if (id) {
-      findUserById(id);
+    if (!currentUser) {
+      alert("Please log in to view this page.");
+      navigate("/login");
     } else {
-      fetchAccount();
+      if (id) {
+        findUserById(id);
+      } else {
+        fetchAccount();
+      }
     }
-  }, [id]);
+  }, [currentUser, id, navigate]);
 
 
   return (
-    <div className="container mt-5 account-container">
+    <div id="account-page">
+    <Navbar/>
+
+    <div className=" container-fluid mt-5 account-container">
     <h1 className="mb-4 account-header">{account ? account.username : 'Loading...'}'s Account</h1>
     {account && (
       <div className="card p-4 account-card">
         {isEditMode ? (
           <form>
+            
             <div className="form-group mb-3 account-form-group">
               <label>Username</label>
               <input 
@@ -149,10 +163,11 @@ function Account() {
               </div>
   
               <button className="btn btn-primary mr-2 account-button" onClick={save}>Save</button>
-              <button className="btn btn-secondary account-button" onClick={cancelEdit}>Cancel</button>
+              <button className="btn btn-secondary ms-2 account-button" onClick={cancelEdit}>Cancel</button>
             </form>
           ) : (
             <div>
+               
               <p><strong>Username:</strong> {account.username}</p>
               <p><strong>First Name:</strong> {account.firstName}</p>
               <p><strong>Last Name:</strong> {account.lastName}</p>
@@ -164,15 +179,23 @@ function Account() {
                 <button className="btn btn-info account-button" onClick={editModeHandler}>Edit</button>
               )}
 
-              {account.role === 'admin' && (
-              <Link to="/admin/users" className="btn btn-warning  ms-2 account-button">
-              Users
-              </Link>
-            
-          )}
+              {
+                account.role === 'admin' && (
+                  <>
+                    <Link to="/admin/users" className="btn btn-warning ms-2 account-button">
+                      All the Users
+                    </Link>
+
+                    <Link to="#" className="btn btn-warning ms-2 account-button">
+                      Admin Report
+                    </Link>
+                  </>
+                )
+              }
+
 
           <Link to={`/profile/${account.id}`} className="btn btn-primary ms-2 account-button">
-                  User Details
+                  Go to Profile
           </Link>
 
           <button onClick={signout} className="btn btn-danger ms-2 account-button">
@@ -184,6 +207,8 @@ function Account() {
 
         </div>
       )}
+    </div>
+    <FooterNav/>
     </div>
   );
 }  

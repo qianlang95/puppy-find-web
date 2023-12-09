@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import './Signin.css';
 import { setCurrentUser } from "./reducer";
 import { useDispatch } from "react-redux";
+import Navbar from "../Home/Navbar/navbar";
 
 function Signin() {
   const [username, setUsername] = useState("");
@@ -16,16 +17,19 @@ function Signin() {
       const credentials = { username: username, password: password };
       const user = await client.signin(credentials);
       dispatch(setCurrentUser(user));
-      navigate("/account");
+      navigate("/");
     } catch (error) {
       setError(error);
     }
   };
 
   return (
+    <div>
+      <Navbar />
+    
     <div className="signin-page">
       <div className="signin-container">
-        <h1 className="text-center mb-4" style={{ backgroundColor: 'transparent' }}>Signin</h1>
+        <h2 className="text-center mb-4 white-text">WELCOME BACK!</h2>
         {error && <div className="alert alert-danger">{error.message}</div>}
         <div className="mb-3">
           <input 
@@ -45,12 +49,26 @@ function Signin() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        <div className="mb-2 text-center">
+          <strong>Login to Your Account</strong>
+        </div>
         <button className="btn btn-primary w-100 mb-3" onClick={signIn}>Signin</button>
+
+        <div className="mb-2 text-center">
+          <strong>Don't have an account?</strong>
+        </div>
         <Link to="/register" className="btn btn-secondary w-100">
           Signup here
         </Link>
+
+        <div className="text-center">
+            <Link to="/" className="btn btn-outline-secondary w-100 mt-2">
+              Continue as a Guest
+            </Link>
+          </div>
       </div>
     </div>
+  </div>
   );
 }
 

@@ -19,14 +19,14 @@ function App() {
         <CurrentUser>
           <div>
             <Routes>
-              <Route  path='/' element={<Home/>} />
+              <Route path='/' element={<Home/>} />
               <Route path="/login" element={<Signin />} />
               <Route path="/register" element={<Signup />} />
               <Route path="/account" element={<Account />} />
               <Route path="/admin/users" element={<UserTable />} />
               <Route path="/account/:id" element={<Account />} />
               <Route path="/profile/:id" element={<UserDetails />} />
-              <Route  path='/detail/:id' element={<Detail/>} />
+              <Route path='/detail/:id' element={<Detail/>} />
 
               
 

@@ -24,7 +24,7 @@ function Navbar() {
 
   return (
     <nav className="navbar navbar-expand navbar-light bg-light">
-      <a className="navbar-brand nav-logo" href="#">        
+      <a className="navbar-brand nav-logo" href="/">        
        Puppy Finder 🐶🐱
         </a>
 

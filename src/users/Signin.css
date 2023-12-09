@@ -1,34 +1,33 @@
 /* Signin.css */
 
 .signin-page {
-    background: linear-gradient(to right, #AED9F7 20%, #BFDFFF 50%, #CFE9FC 80%);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
+    background: url("../Home/Navbar/pet-bg.jpg");
+    background-position: center;
   }
   
   .signin-container {
     width: 400px; /* Increased width */
     padding: 30px; /* Increased padding */
     border-radius: 8px; /* Rounded corners */
-    background-color: transparent; /* Clear background */
+    background-color: rgba(235, 175, 92, 0.682); /* Clear background */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   }
   
-  /* Text and button colors */
-  .signin-container h1,
-  .signin-container button,
-  .signin-container input {
-    color: rgb(248, 247, 247)0c0; /* High contrast text color for readability */
-     /* Solid background for inputs and buttons */
+  
+  
+  .signin-container button:hover {
+    background-color: rgba(165, 206, 232, 0.682);
+  }
+
+  .white-text {
+    color: white;
   }
   
-  Hover state for buttons to maintain contrast
-  .signin-container button:hover {
-    background-color: #e0e0e0;
-  }
+
+  
   

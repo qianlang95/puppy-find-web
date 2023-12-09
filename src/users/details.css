@@ -1,0 +1,39 @@
+#detail-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: url("../Home/misc/v1008-35.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.profile-container {
+    flex: 1; /* This will push the footer down */
+  }
+
+/* ProfilePage.css */
+
+/* Style for the profile information card */
+.profile-info-card {
+    text-align: center; /* Centering content */
+    width: 70%; /* Adjust width to make the card smaller */
+    margin-left: auto; /* Auto margin for horizontal centering */
+    margin-right: auto; /* Auto margin for horizontal centering */
+  }
+  
+  
+  
+  
+  /* Style for labels */
+  .profile-info-label {
+    font-weight: bold; /* Making font bold */
+    font-size: 1.1rem; /* Increasing font size */
+    display: inline-block; /* Align with the colon */
+    margin-right: 5px; /* Space before the colon */
+  }
+  
+  /* Style for the value following the label */
+  .profile-info-value {
+    display: inline; /* Align with the label */
+  }
+  

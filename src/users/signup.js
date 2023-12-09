@@ -4,6 +4,7 @@ import * as client from "./client";
 import './Signin.css';
 import { useDispatch } from 'react-redux';
 import { setCurrentUser } from './reducer'; 
+import Navbar from "../Home/Navbar/navbar";
 
 function Signup() {
   const [username, setUsername] = useState("");
@@ -25,9 +26,13 @@ function Signup() {
   };
 
   return (
+    <div>
+      <Navbar />
+    
     <div className="signin-page">
       <div className="signin-container">
-        <h1 className="text-center mb-4" style={{ backgroundColor: 'transparent' }}>Signup</h1>
+        <h2 className="text-center mb-4 white-text">NEW HERE?</h2>
+        <h6 className="text-center mb-4 white-text">Create an account and find your puppy</h6>
         {error && <div className="alert alert-danger">{error.message}</div>}
         <div className="mb-3">
           <input 
@@ -64,6 +69,7 @@ function Signup() {
         </Link>
       </div>
     </div>
+  </div>
   );
 }
 
