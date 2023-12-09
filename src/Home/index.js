@@ -224,7 +224,7 @@ function Home(){
                      </div>
              ):(
                     <div class="alert alert-warning alert_mv" role="alert">
-                        To list or start a petition for adopting a puppy you must be registered <a href="#" class="alert-link">Click here to register</a>.
+                        To list or start a petition for adopting a puppy you must be registered <a href="#/register" class="alert-link">Click here to register</a>.
                     </div>
 
              )}
