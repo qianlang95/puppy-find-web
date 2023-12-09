@@ -27,6 +27,20 @@
   .white-text {
     color: white;
   }
+
+  .stylish-input {
+    border: 2px solid #ddd; /* Example border */
+    border-radius: 4px; /* Rounded corners */
+    padding: 10px; /* Padding inside input */
+  }
+  
+  .bold-large-button {
+    font-weight: bold; /* Make the text bold */
+    font-size: 18px; /* Increase the font size to 18px */
+  }
+  
+  
+  
   
 
   

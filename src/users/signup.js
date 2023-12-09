@@ -31,13 +31,13 @@ function Signup() {
     
     <div className="signin-page">
       <div className="signin-container">
-        <h2 className="text-center mb-4 white-text">NEW HERE?</h2>
-        <h6 className="text-center mb-4 white-text">Create an account and find your puppy</h6>
+        <h2 className="text-center mb-4 white-text">🐕 NEW HERE? 👣</h2>
+        <h4 className="text-center mb-4 white-text">Create an account and find your puppy</h4>
         {error && <div className="alert alert-danger">{error.message}</div>}
         <div className="mb-3">
           <input 
             type="text"
-            className="form-control"
+            className="form-control stylish-input"
             placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -46,7 +46,7 @@ function Signup() {
         <div className="mb-3">
           <input 
             type="password"
-            className="form-control"
+            className="form-control stylish-input"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -54,7 +54,7 @@ function Signup() {
         </div>
         <div className="mb-3">
           <select
-            className="form-control"
+            className="form-control stylish-input"
             value={role}
             onChange={(e) => setRole(e.target.value)}
           >
@@ -63,8 +63,8 @@ function Signup() {
             <option value="admin">Admin</option>
           </select>
         </div>
-        <button className="btn btn-primary w-100 mb-3" onClick={signup}>Signup</button>
-        <Link to="/login" className="btn btn-secondary w-100">
+        <button className="btn btn-primary w-100 mb-3 bold-large-button" onClick={signup}>Signup</button>
+        <Link to="/login" className="btn btn-secondary w-100 bold-large-button">
           Signin here
         </Link>
       </div>

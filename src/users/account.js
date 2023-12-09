@@ -33,10 +33,16 @@ function Account() {
   
 
   const findUserById = async (userId) => {
-    const user = await client.findUserById(userId);
-    setAccount(user);
-    setEditAccount(user); 
+    if (currentUser.role === 'admin') {
+      const user = await client.findUserById(userId);
+      setAccount(user);
+      setEditAccount(user);
+    } else {
+      alert("You do not have permission to perform this action.");
+      navigate("/login");
+    }
   };
+
   const signout = async () => {
     const status = await client.signout();
     dispatch(setCurrentUser(null));
@@ -59,16 +65,23 @@ function Account() {
   };
 
   useEffect(() => {
-    if (!currentUser) {
-      alert("Please log in to view this page.");
-      navigate("/login");
-    } else {
-      if (id) {
-        findUserById(id);
+    const loadAccountData = async () => {
+      if (!currentUser) {
+        alert("Please log in to view this page.");
+        navigate("/login");
       } else {
-        fetchAccount();
+        if (id && currentUser.role !== 'admin' && id !== currentUser.id) {
+          alert("You do not have permission to view this page.");
+          navigate("/login");
+        } else if (id) {
+          await findUserById(id);
+        } else {
+          await fetchAccount();
+        }
       }
-    }
+    };
+  
+    loadAccountData();
   }, [currentUser, id, navigate]);
 
 
@@ -77,7 +90,7 @@ function Account() {
     <Navbar/>
 
     <div className=" container-fluid mt-5 account-container">
-    <h1 className="mb-4 account-header">{account ? account.username : 'Loading...'}'s Account</h1>
+    <h1 className="mb-4 account-header">🫧 {account ? account.username : 'Loading...'}'s Account 🫧</h1>
     {account && (
       <div className="card p-4 account-card">
         {isEditMode ? (
@@ -168,12 +181,13 @@ function Account() {
           ) : (
             <div>
                
-              <p><strong>Username:</strong> {account.username}</p>
-              <p><strong>First Name:</strong> {account.firstName}</p>
-              <p><strong>Last Name:</strong> {account.lastName}</p>
-              <p><strong>Date of Birth:</strong> {account.dob}</p>
-              <p><strong>Email:</strong> {account.email}</p>
-              <p><strong>Role:</strong> {account.role}</p>
+               <p><strong>Username:</strong> {account.username || 'Not Provided'}</p>
+                <p><strong>First Name:</strong> {account.firstName || 'Not Provided'}</p>
+                <p><strong>Last Name:</strong> {account.lastName || 'Not Provided'}</p>
+                <p><strong>Date of Birth:</strong> {account.dob || 'Not Provided'}</p>
+                <p><strong>Email:</strong> {account.email || 'Not Provided'}</p>
+                <p><strong>Role:</strong> {account.role || 'Not Provided'}</p>
+
               
               {canEdit() && (
                 <button className="btn btn-info account-button" onClick={editModeHandler}>Edit</button>

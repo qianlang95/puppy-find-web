@@ -87,62 +87,63 @@ function UserDetails() {
       <div className="container mt-4 flex-grow-1">
   
         {/* First Row - Profile Information */}
-      <div className="row mb-4">
-        <div className="col-12">
-          <div className="card">
-            <div className="card-body profile-info-card">
-              {/* Profile Information */}
-              {user && (
-                <h2 className="text-primary mb-3">Hi there, it's {user.username}'s profile</h2>
-              )}
-              {user && (
-                <>
-                  <p><span className="profile-info-label">Username:</span><span className="profile-info-value">{user.username}</span></p>
-                  <p><span className="profile-info-label">Email:</span><span className="profile-info-value">{user.email}</span></p>
-                  {isCurrentUserProfile && (
-                    <>
-                      <p><span className="profile-info-label">Date of Birth:</span><span className="profile-info-value">{user.dob}</span></p>
-                      <p><span className="profile-info-label">Last Name:</span><span className="profile-info-value">{user.lastName}</span></p>
-                    </>
-                  )}
-                  <p><span className="profile-info-label">First Name:</span><span className="profile-info-value">{user.firstName}</span></p>
-                  {currentUser && currentUser._id !== id && (
-                    <div className="mt-3">
-                      {alreadyFollowing() ? (
-                        <button onClick={unfollowUser} className="btn btn-danger btn-block">
-                          Unfollow
-                        </button>
-                      ) : (
-                        <button onClick={followUser} className="btn btn-warning btn-block">
-                          Follow
-                        </button>
-                      )}
-                    </div>
-                  )}
-                </>
-              )}
-            </div>
-          </div>
-        </div>
+<div className="row mb-4 justify-content-center">
+  <div className="col-md-8">
+    <div className="card transparent-card">
+      <div className="card-body profile-info-card">
+        {/* Profile Information */}
+        {user && (
+          <h2 className="text-primary mb-3">Hi there, it's {user.username}'s profile</h2>
+        )}
+        {user && (
+          <>
+            <p><span className="profile-info-label">Username:</span><span className="profile-info-value">{user.username ? user.username : "Not Provided"}</span></p>
+            <p><span className="profile-info-label">Email:</span><span className="profile-info-value">{user.email ? user.email : "Not Provided"}</span></p>
+            {isCurrentUserProfile && (
+              <>
+                <p><span className="profile-info-label">Date of Birth:</span><span className="profile-info-value">{user.dob ? user.dob : "Not Provided"}</span></p>
+                <p><span className="profile-info-label">Last Name:</span><span className="profile-info-value">{user.lastName ? user.lastName : "Not Provided"}</span></p>
+              </>
+            )}
+            <p><span className="profile-info-label">First Name:</span><span className="profile-info-value">{user.firstName ? user.firstName : "Not Provided"}</span></p>
+            {currentUser && currentUser._id !== id && (
+              <div className="mt-3">
+                {alreadyFollowing() ? (
+                  <button onClick={unfollowUser} className="btn btn-danger btn-block">
+                    Unfollow
+                  </button>
+                ) : (
+                  <button onClick={followUser} className="btn btn-warning btn-block">
+                    Follow
+                  </button>
+                )}
+              </div>
+            )}
+          </>
+        )}
       </div>
+    </div>
+  </div>
+</div>
+
   
         {/* Second Row - Followers and Following */}
         <div className="row mb-4">
           {/* Followers */}
           <div className="col-md-6">
-            <div className="card h-100">
-              <div className="card-body overflow-auto" style={{ maxHeight: '300px' }}>
-                <h3>Followers</h3>
+            <div className="card h-100 shadow">
+              <div className="card-body overflow-auto" style={{ maxHeight: '300px', scrollbarWidth: 'thin' }}>
+                <h3 className="font-weight-bold">Followers 👀</h3>
                 <div className="list-group">
-                {followers.length > 0 ? (
-        followers.map((follower, index) => (
-          <Link key={index} className="list-group-item" to={`/profile/${follower.follower._id}`}>
-            {follower.follower.username}
-          </Link>
-        ))
-      ) : (
-        <p>Seems like nothing here</p>
-      )}
+                  {followers.length > 0 ? (
+                    followers.map((follower, index) => (
+                      <Link key={index} className="list-group-item list-group-item-action larger-text" to={`/profile/${follower.follower._id}`}>
+                        {follower.follower.username}
+                      </Link>
+                    ))
+                  ) : (
+                    <p className="larger-text">Seems like nothing here yet...</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -150,19 +151,19 @@ function UserDetails() {
   
           {/* Following */}
           <div className="col-md-6">
-            <div className="card h-100">
-              <div className="card-body overflow-auto" style={{ maxHeight: '300px' }}>
-                <h3>Following</h3>
+            <div className="card h-100 shadow">
+              <div className="card-body overflow-auto" style={{ maxHeight: '300px', scrollbarWidth: 'thin' }}>
+                <h3 className="font-weight-bold">Following 🎯</h3>
                 <div className="list-group">
-                {following.length > 0 ? (
-        following.map((follows, index) => (
-          <Link key={index} className="list-group-item" to={`/profile/${follows.followed._id}`}>
-            {follows.followed.username}
-          </Link>
-        ))
-      ) : (
-        <p>Seems like nothing here</p>
-      )}
+                  {following.length > 0 ? (
+                    following.map((follows, index) => (
+                      <Link key={index} className="list-group-item list-group-item-action larger-text" to={`/profile/${follows.followed._id}`}>
+                        {follows.followed.username}
+                      </Link>
+                    ))
+                  ) : (
+                    <p className="larger-text">Seems like nothing here yet...</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -173,19 +174,21 @@ function UserDetails() {
         <div className="row mb-5">
           {/* Liked Breeds */}
           <div className="col-md-6">
-            <div className="card h-100">
-              <div className="card-body overflow-auto" style={{ maxHeight: '300px' }}>
-                <h3>Liked Breed</h3>
+            <div className="card h-100 shadow">
+              <div className="card-header">
+                <h3 className="font-weight-bold">Liked Breed 💗</h3>
+              </div>
+              <div className="card-body overflow-auto" style={{ maxHeight: '300px', scrollbarWidth: 'thin' }}>
                 <div className="list-group">
-                {likes.length > 0 ? (
-        likes.map((like, index) => (
-          <a key={index} href={`#`} className="list-group-item profile-list-item">
-            {like.breedId}
-          </a>
-        ))
-      ) : (
-        <p>Seems like nothing here</p>
-      )}
+                  {likes.length > 0 ? (
+                    likes.map((like, index) => (
+                      <a key={index} href={`#`} className="list-group-item list-group-item-action larger-text">
+                        {like.breedId}
+                      </a>
+                    ))
+                  ) : (
+                    <p className="larger-text">Seems like nothing here yet...</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -193,30 +196,31 @@ function UserDetails() {
   
           {/* My Posts */}
           <div className="col-md-6">
-            <div className="card h-100">
-              <div className="card-body overflow-auto" style={{ maxHeight: '300px' }}>
-                <h3>My Posts</h3>
+            <div className="card h-100 shadow">
+              <div className="card-header">
+                <h3 className="font-weight-bold">My Posts 📸</h3>
+              </div>
+              <div className="card-body overflow-auto" style={{ maxHeight: '300px', scrollbarWidth: 'thin' }}>
                 <div className="list-group">
-                {posts && posts.length > 0 ? ( 
-        posts.map((post, index) => (
-          <a key={index} href={`/detail/${post._id}`} className="list-group-item profile-list-item">
-            {post.name}
-          </a>
-        ))
-      ) : (
-        <p>Seems like nothing here</p>
-      )}
+                  {posts && posts.length > 0 ? (
+                    posts.map((post, index) => (
+                      <a key={index} href={`/detail/${post._id}`} className="list-group-item list-group-item-action larger-text">
+                        {post.name}
+                      </a>
+                    ))
+                  ) : (
+                    <p className="larger-text">Seems like nothing here yet...</p>
+                  )}
                 </div>
               </div>
             </div>
           </div>
         </div>
-  
       </div>
       <FooterNav/>
     </div>
-  )
-}
+  );
+                  }  
 
 
 export default UserDetails;

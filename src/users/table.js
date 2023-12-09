@@ -7,6 +7,8 @@ import Navbar from "../Home/Navbar/navbar";
 import FooterNav from "../Home/Footer";
 import { useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
+import { FaUserShield } from 'react-icons/fa';
+
 
 
 function UserTable() {
@@ -71,26 +73,28 @@ function UserTable() {
     return null; // 或者可以返回一个空的 <div> 或其他标记
   }
 
-
   return (
     <div id="detail-page">
       <Navbar />
       <div className="container detail-container">
-        <h1 className="my-4">Check all the users' info here</h1>
+        <h1 className="my-4"><FaUserShield /> Check all the users' info here</h1>
+
         <div className="row">
           <div className="col">
             <form className="mb-3">
               <div className="mb-3">
                 <input
                   type="text"
-                  className="usertable form-control"
+                  className="form-control"
                   value={user.username}
                   onChange={(e) => setUser({ ...user, username: e.target.value })}
                   placeholder="Enter username"
                 />
+              </div>
+              <div className="mb-3">
                 <input
                   type="password"
-                  className="usertable form-control mt-2"
+                  className="form-control"
                   value={user.password}
                   onChange={(e) => setUser({ ...user, password: e.target.value })}
                   placeholder="Enter password"
@@ -99,7 +103,7 @@ function UserTable() {
               <div className="mb-3">
                 <input
                   type="text"
-                  className=" usertable form-control"
+                  className="form-control"
                   value={user.firstName}
                   onChange={(e) => setUser({ ...user, firstName: e.target.value })}
                   placeholder="Enter first name"
@@ -108,7 +112,7 @@ function UserTable() {
               <div className="mb-3">
                 <input
                   type="text"
-                  className="usertable form-control"
+                  className="form-control"
                   value={user.lastName}
                   onChange={(e) => setUser({ ...user, lastName: e.target.value })}
                   placeholder="Enter last name"
@@ -116,7 +120,7 @@ function UserTable() {
               </div>
               <div className="mb-3">
                 <select
-                  className="usertable form-select"
+                  className="form-select"
                   value={user.role}
                   onChange={(e) => setUser({ ...user, role: e.target.value })}
                 >
@@ -127,26 +131,26 @@ function UserTable() {
               </div>
               <button
                 type="button"
-                className="usertable btn btn-success me-2"
+                className="btn btn-info me-2"
                 onClick={updateUser}
               >
-                <BsFillCheckCircleFill className="me-2 fs-4 usertable" />
+                <BsFillCheckCircleFill className="me-2 fs-4" />
                 Update User
               </button>
               <button
                 type="button"
-                className="usertable btn btn-success"
+                className="btn btn-dark"
                 onClick={createUser}
               >
-                <BsPlusCircleFill className="me-2 fs-4 usertable" />
+                <BsPlusCircleFill className="me-2 fs-4" />
                 Create User
               </button>
             </form>
           </div>
         </div>
-        <table className="table usertable">
+        <table className="table table-striped table-hover table-responsive usertable">
           <thead>
-            <tr>
+            <tr className="text-center">
               <th scope="col">Username</th>
               <th scope="col">First Name</th>
               <th scope="col">Last Name</th>
@@ -155,9 +159,9 @@ function UserTable() {
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr key={user._id}>
+              <tr key={user._id} className="text-center">
                 <td>
-                  <Link to={`/account/${user._id}`}>{user.username}</Link>
+                  <Link to={`/account/${user._id}`} className="user-link">{user.username}</Link>
                 </td>
                 <td>{user.firstName}</td>
                 <td>{user.lastName}</td>
@@ -185,7 +189,7 @@ function UserTable() {
       <FooterNav/>
     </div>
   );
-}
+}  
 
 
 export default UserTable;
