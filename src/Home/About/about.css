@@ -15,8 +15,39 @@
 
 .acc-cointaner{
     /* border:solid black; */
-    border: 2px !important;
-    border-radius: 20% !important;
     width: 50rem;
     margin: auto;
+}
+
+.webcoint{
+    margin-top: 53px !important;
+    /* border: solid black; */
+    margin: auto;
+    width: 70rem;
+    /* height: 20rem; */
+}
+
+.about-cl{
+    /* border: solid; */
+    display: flex;
+    justify-content: center;
+    /* height: 15rem; */
+}
+
+.card-ed{
+    margin-right: 20px !important;
+}
+
+.bt-ed{
+    border-radius: 20px;
+}
+
+.float-center{
+    display: flex;
+    justify-content: center;
+}
+
+.float-c{
+    margin: auto;
+
 }

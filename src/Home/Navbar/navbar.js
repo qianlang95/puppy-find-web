@@ -53,13 +53,13 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand navbar-light bg-light">
       <a className="navbar-brand nav-logo" href="#">        
-       Puppy Finder 🐶🐱
+       Puppy Finder 🐶
         </a>
 
       <ul className="navbar-nav post-edit">
 
         <li className="nav-item post-edit2">
-        <li className="nav-item"><NavLink className={`nav-link btn btn-warning nav-pos ${path[1].includes("post") ? "btn-ultra":""  }  `} to="/">🔎 Search</NavLink></li>  
+        <li className="nav-item"><NavLink className={`nav-link btn btn-warning nav-pos ${path[1].includes("post") || path[1].includes("about") ? "btn-ultra":""  }  `} to="/">🔎 Search</NavLink></li>  
         </li>
 
 

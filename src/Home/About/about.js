@@ -29,7 +29,7 @@ function About() {
 
                             <Accordion defaultActiveKey="0" flush>
 
-                                <Accordion.Item eventKey="1">
+                                <Accordion.Item eventKey="0">
                                     <Accordion.Header>Why Puppy Finder? </Accordion.Header>
                                     <Accordion.Body>
                                     <p>Puppy Finder stands out in the world of pet adoption for several reasons: <br/> <br/>
@@ -44,7 +44,7 @@ function About() {
                                 </Accordion.Item>
 
 
-                                <Accordion.Item eventKey="0">
+                                <Accordion.Item eventKey="1">
                                     <Accordion.Header>The secret recipe</Accordion.Header>
                                     <Accordion.Body>
                                     <p>
@@ -60,8 +60,62 @@ function About() {
 
                             </Accordion>
 
+
                             </div>
 
+
+                            <div className="webcoint">
+                                <div className="about-cl">
+
+                                <div className="card card-ed" style={{"width": "18rem", "height":"15rem"}}>
+                                    <div class="card-body">
+                                        <h5 className="card-title">Mattia</h5>
+                                        <div className="float-end">
+                                            <p className="btn btn-warning bt-ed"> <b>Role</b> 🐈‍⬛ </p>
+                                        </div><br/><br/><br/>
+
+                                        <div className="float-c">
+                                        <p className="card-text">Dashboard & About Us. Frontend & Backend</p>
+                                        </div>
+                                        <br/>
+                                        <div className="float-center">
+                                                <a href="#" className="btn btn-dark">GitHub</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="card card-ed" style={{"width": "18rem", "height":"15rem"}}>
+                                    <div class="card-body">
+                                        <h5 className="card-title">Quian</h5>
+                                        <div className="float-end">
+                                            <p className="btn btn-warning bt-ed"> <b>Role</b> 🐈 </p>
+                                        </div><br/><br/><br/>
+                                        <p className="card-text">Search API & Post. Frontend & Backend</p>
+                                        <div className="float-center">
+                                                <a href="#" className="btn btn-dark">GitHub</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="card card-ed" style={{"width": "18rem", "height":"15rem"}}>
+                                    <div class="card-body">
+                                        <h5 className="card-title">Sujuan</h5>
+                                        <div className="float-end">
+                                            <p className="btn btn-warning bt-ed"> <b>Role</b> 🐈 </p>
+                                        </div><br/><br/><br/>
+                                        <p className="card-text">Login & Users. Frontend & Backend</p>
+                                        <div className="float-center">
+                                                <a href="#" className="btn btn-dark">GitHub</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                </div>
+
+                            </div>
                  </div>
              </div> 
 
@@ -79,35 +133,6 @@ function About() {
 
 
 
-
-                {/* <div className="acc-cointaner">
-
-
-                <div className="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                    <div className="progress-bar progress-bar-striped progress-bar-animated" style={{"width": "90%"}}></div>
-                </div>
-
-
-                <Accordion defaultActiveKey="0" flush>
-
-                    <Accordion.Item eventKey="1">
-                        <Accordion.Header>Why Puppy Finder? </Accordion.Header>
-                        <Accordion.Body>
-                            This is the first item's accordion body.
-                        </Accordion.Body>
-                    </Accordion.Item>
-
-
-                    <Accordion.Item eventKey="0">
-                        <Accordion.Header>The secret recipe</Accordion.Header>
-                        <Accordion.Body>
-                            This is the second item's accordion body.
-                        </Accordion.Body>
-                    </Accordion.Item>
-
-                </Accordion>
-
-                </div> */}
 
 
             </div>
