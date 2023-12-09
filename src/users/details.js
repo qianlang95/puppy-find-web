@@ -199,7 +199,7 @@ function UserDetails() {
                 <div className="list-group">
                 {posts && posts.length > 0 ? ( 
         posts.map((post, index) => (
-          <a key={index} href={`#`} className="list-group-item profile-list-item">
+          <a key={index} href={`/detail/${post._id}`} className="list-group-item profile-list-item">
             {post.name}
           </a>
         ))
