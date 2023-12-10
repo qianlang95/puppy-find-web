@@ -1,7 +1,8 @@
 import axios from "axios";
 const client = axios.create({
   withCredentials: true,
-  baseURL: "http://localhost:4000/api/users",
+  // baseURL: "http://localhost:4000/api/users",
+  baseURL: "https://puppy-find-node-server.onrender.com/api/users",
 });
 
 export const userFollowsUser = async (followed) => {

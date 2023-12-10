@@ -17,7 +17,8 @@ function Comments({postId}) {
     // const API_BASE = process.env.PUPPY_NODE_API_BASE;
 
     //for local
-    const API_BASE = "http://localhost:4000";
+    // const API_BASE = "http://localhost:4000";
+    const API_BASE = process.env.REACT_APP_BASE_API_URL;
 
     // const API = "http://localhost:4002/api/comments";
     // const API_ID = "http://localhost:4002/api/comment";

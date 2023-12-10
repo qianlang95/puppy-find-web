@@ -47,7 +47,8 @@ function Detail() {
     // const API_BASE = process.env.PUPPY_NODE_API_BASE;
 
     //for local
-    const API_BASE = "http://localhost:4000";
+    // const API_BASE = "http://localhost:4000";
+    const API_BASE = process.env.REACT_APP_BASE_API_URL;
 
 
     // const puppy_server_url = 'http://localhost:4002/api';

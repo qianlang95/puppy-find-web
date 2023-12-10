@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE = "http://localhost:4000/api";
+const API_BASE = "https://puppy-find-node-server.onrender.com/api";
 
 const LIKES_API = `${API_BASE}/likes`;
 

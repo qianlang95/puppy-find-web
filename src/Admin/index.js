@@ -18,7 +18,8 @@ function Admin() {
     // const API_BASE = process.env.PUPPY_NODE_API_BASE;
 
     //for local
-    const API_BASE = "http://localhost:4000";
+    // const API_BASE = "http://localhost:4000";
+    const API_BASE = process.env.REACT_APP_BASE_API_URL;
 
 
     // const API_DOMAIN = "http://localhost:4002/api"
