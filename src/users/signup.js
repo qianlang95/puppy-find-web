@@ -18,7 +18,7 @@ function Signup() {
       const credentials = { username, password, role }; // Include role in credentials
       const user = await client.signup(credentials);
       dispatch(setCurrentUser(user));
-      navigate("/account");
+      navigate("/");
     } catch (err) {
       setError(err.response.data.message);
     }

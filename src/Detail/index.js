@@ -366,13 +366,14 @@ useEffect(() => {
                       <br/>
                       
                       <div>
-
+                      {currentUser && (
                       <button className="btn"><FaHeart style={{ marginRight: '10px', fontSize: '75px', color: 'pink' }}
-                      onClick={giveThumpUp}></FaHeart></button>
-                      {numberOfLikes} likes
+                      onClick={giveThumpUp}></FaHeart></button>)}
+                      {currentUser && ( <p> {numberOfLikes} likes</p>
+                      )}
 
 
-                        {usersLikes && (
+                        {currentUser && usersLikes && (
                           
                           <div className="likes-list">
                             <p>Likes are from users:</p>

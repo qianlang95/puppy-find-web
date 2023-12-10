@@ -20,13 +20,13 @@ function FooterNav(){
 
              <ul class="nav nav-ed ">
             <li class="nav-item">
-                <a class="nav-link active btn btn-warning btn-supp" aria-current="page" href="#">About</a>
+                <a class="nav-link active btn btn-warning btn-supp" aria-current="page" href="/about">About</a>
              </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Mattia</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Quian</a>
+                <a class="nav-link" href="#">Qian</a>
             </li>
             <li className="nav-item">
                 <a className="nav-link" href="#">Sujuan</a>

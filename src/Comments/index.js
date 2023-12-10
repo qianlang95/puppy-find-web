@@ -30,6 +30,13 @@ function Comments({postId}) {
 "postId":postId
     });
 
+//     const [comment, setComment] = useState({
+// "description":"",
+// "userId": "",
+// "userName":"",
+// "postId":postId
+//     });
+
     const [comments, setComments] = useState([]);
 
       const fetchCommentsByPostId = async () => {

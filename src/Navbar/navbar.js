@@ -42,11 +42,11 @@ function Navbar() {
       <div className="action-users">
 
         <ul className="navbar-nav">
-
+            <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/">Dashboard</NavLink></li>
             <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/login">Login</NavLink></li>
             <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/register">Register</NavLink></li>
             <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-acc" to="/account">Hello! {currentUser &&  <b>{currentUser.username}</b>}</NavLink></li>
-
+            
             {/* //This will be visible only to the logged-in users  */}
             {/* <li className="nav-item"><NavLink className="nav-link" to="/">Account</NavLink></li> */}
             {/* <li className="nav-item"><NavLink className="nav-link" to="/">Settings</NavLink></li> */}

@@ -19,7 +19,7 @@ import { Provider } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "./Navbar/navbar";
 
-
+import About from "./Home/About/about";
 
 
 
@@ -44,10 +44,9 @@ function App() {
 
             <Route path="/detail/:breedId/*"    element={<Detail/>}/>
 
-            {/* <Route path="/post"    element={<Post/>}/> */}
 
             <Route path="/admin"    element={<Admin/>}/>
-
+            <Route  path='/about' element={<About/>} />
 
               
 
