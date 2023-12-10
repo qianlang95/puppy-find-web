@@ -1,4 +1,4 @@
-
+import * as userClient from "../users/client.js"
 import axios from "axios"
 import "./index.css"
 
@@ -8,6 +8,7 @@ import  pupImage from "./misc/english-springer-spaniel-dog-puppy-artistic-style-
 import { Link } from "react-router-dom"
 import catImage from "./misc/catImage.jpg"
 import * as client from "./client"
+
 // import * as client from "./client.js"
 
 
@@ -15,24 +16,24 @@ import db from "../Database"
 import { useEffect, useState } from "react"
 
 function Home(){
-    // const ewq = ["789", "678", "567"]
-    // const qwe = ["890", ...ewq, "456"]
-    // const wer = qwe.find((bnm, asd) => bnm === "678")
 
-    // const pets = db.pets;
 
-    // const [pets, setPets] = useState(db.pets)
-    // const [pet, setPet] = useState({
-    //     name: "New Name", breed: "terrier", age:"2", location: "San Jose, CA", type: "dog",
-    // })
-
-    const URL = `http://localhost:4001/api/pets`
-
+    // const URL = `http://localhost:4001/api/pets`
+    const [account, setAccount] = useState(null);
     const [pets, setPets] = useState([])
     const [pet, setPet] = useState({
         name: "New Name", breed: "terrier", age:"2", location: "San Jose, CA", type: "dog",
     })
 
+    const fetchAccount = async() => {
+        try {
+            const user = await userClient.account();
+            setAccount(user)
+        } catch (error) {
+            console.error("Error in fetching the account", error)
+            
+        }
+    }
 
 
 
@@ -48,6 +49,14 @@ function Home(){
     useEffect( () => {
         console.log(pets)
     }, [pets] )
+
+    useEffect( () => {
+        fetchAccount();
+    }, [] )
+
+    useEffect( () => {
+        console.log("Account Info from HomePage: ", account)
+    }, [account] )
 
     const breedIdMaps = {
         "Affenpinscher": 1,
@@ -151,7 +160,8 @@ function Home(){
     const handeBreedId = (e) => {
         const breed = e.target.value;
         const breedId = breedIdMaps[breed];
-        setPet({...pet, breed: breed, breedId: breedId})
+        const userId = account._id;
+        setPet({...pet, breed: breed, breedId: breedId, userId: userId})
     }
 
 
@@ -208,10 +218,18 @@ function Home(){
                     <p class="card-text">On PuppyFinder you can find, search and discover puppies that needs a home.</p>
                  </div>
              </div>  
-             <div class="alert alert-warning alert_mv" role="alert">
-                To list or start a petition for adopting a puppy you must be registered <a href="/register" class="alert-link">Click here to register</a>.
-            </div>
+             {account ?(
+                    <div class="alert alert-warning alert_mv" role="alert">
+                         Welcome to PuppyFinder <b>{account.username}</b>.
+                     </div>
+             ):(
+                    <div class="alert alert-warning alert_mv" role="alert">
+                        To list or start a petition for adopting a puppy you must be registered <a href="#/register" class="alert-link">Click here to register</a>.
+                    </div>
 
+             )}
+
+            {account && account.role === "seller" && (
 
         <div class="card text-center poster">
             <div class="card-header">
@@ -229,9 +247,9 @@ function Home(){
 
                 <div>
                     <select className="form-select" aria-label="Default" onChange={(e)=> setPet({...pet, type: e.target.value})}>
-                        <option selected>Choose type of puppy</option>
-                        <option value="cat" >Cat</option>
-                        <option value="dog">Dog</option>
+                        {/* <option selected>Choose type of puppy</option> */}
+                        {/* <option value="cat" >Cat</option> */}
+                        <option selected value="dog">Dog</option>
 
 
                     </select>
@@ -328,7 +346,10 @@ function Home(){
         </div>
 
 
-            {/* //The puppy cards will be added here */}
+            )}
+
+
+            {/* Puppy Card Area  */}
 
             <div className="container-fluid flex-wrap moved">
 
@@ -337,11 +358,11 @@ function Home(){
                     {pets.map((pet) => (
 
 
-                        <div key={pet._id} className="card mv_up" style={{"width": "15rem"}}>
+                        <div key={pet._id} className="card mv_up" style={{"width": "14rem"}}>
                     {/* <img src={pupImage} className="card-img-top" alt="..." /> */}
                     <img src={pet.type === "dog" ? pupImage : catImage} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <Link to={`/detail/${pet._id}`}>
+                        <Link to={`/post/${pet._id}`}>
 
                         <h5 className="card-title">{pet.name}</h5>
                         </Link>
@@ -352,13 +373,33 @@ function Home(){
                         <li className="list-group-item">Breed: {pet.breed}</li>
                         <li className="list-group-item">Age: {pet.age}</li>
                         <li className="list-group-item">Location: {pet.location}</li>
+                    {account && account._id !== pet.userId && (
+                        <div>
+                        <ul className="list-group list-group-flush">
+                        <li className="list-group-item ">
+                            <button className=" btn btn-warning love">🩶</button>
+                        </li>
+
+                        </ul>
+
+                        </div>
+
+
+                    ) }
+                        {/* <li className="list-group-item">userId: {pet.userId}</li> */}
 
                     </ul>
 
-                    <button className="btn btn-warning" onClick={ (event) => {event.preventDefault(); setPet(pet);  } }>Edit</button>
+
+                {account && account._id === pet.userId  && (
+                    <div className="btn-container">
+                        <button className="btn btn-warning mt-0 edit-mv" onClick={ (event) => {event.preventDefault(); setPet(pet);  } }>✏️ </button>
+                        <button className="btn btn-warning mt-0"  onClick={(event) => {event.preventDefault(); deletePet(pet._id)}}>❌</button>
+                    </div>
+
+                )} 
 
 
-                    <button className="btn btn-danger"  onClick={(event) => {event.preventDefault(); deletePet(pet._id)}}>Delete Post</button>
                 </div>
 
 
