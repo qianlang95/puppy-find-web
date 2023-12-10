@@ -16,10 +16,10 @@ function Navbar() {
 
   const navigate = useNavigate();
 
-  const signout = async () => {
-    const status = await client.signout();
-    navigate("/login");
-  };
+  // const signout = async () => {
+  //   const status = await client.signout();
+  //   navigate("/login");
+  // };
 
   const {pathname} = useLocation();
   const path = pathname.split('/')
@@ -51,7 +51,7 @@ function Navbar() {
             <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/login">Login</NavLink></li>
             <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-end" to="/register">Register</NavLink></li>
             <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-acc" to="/account">Hello! {currentUser &&  <b>{currentUser.username}</b>}</NavLink></li>
-            <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-log" onClick={signout}> <b>Logout</b> </NavLink></li>
+            {/* <li className="nav-item"><NavLink className="nav-link btn btn-secondary nav-log" onClick={signout}> <b>Logout</b> </NavLink></li> */}
 
             
             {/* //This will be visible only to the logged-in users  */}
