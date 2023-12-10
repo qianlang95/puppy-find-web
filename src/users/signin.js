@@ -4,7 +4,6 @@ import { useNavigate, Link } from "react-router-dom";
 import './Signin.css';
 import { setCurrentUser } from "./reducer";
 import { useDispatch } from "react-redux";
-import Navbar from "../Home/Navbar/navbar";
 
 function Signin() {
   const [username, setUsername] = useState("");
@@ -25,7 +24,6 @@ function Signin() {
 
   return (
     <div>
-      <Navbar />
   
       <div className="signin-page">
         <div className="signin-container">

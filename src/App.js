@@ -1,3 +1,10 @@
+
+import Search from "./Search";
+import Detail from "./Detail";
+import {HashRouter} from "react-router-dom";
+import {Routes, Route, Navigate} from "react-router";
+// import "dotenv/config";
+import Admin from "./Admin";
 import Signin from "./users/signin";
 import Account from "./users/account";
 import UserTable from "./users/table";
@@ -5,11 +12,15 @@ import Signup from "./users/signup";
 import UserDetails from "./users/details";
 import CurrentUser from "./users/currentUser";
 import Home from './Home';
-import Detail from './Home/Detail/detail';
+import Post from './Home/Detail/detail';
 import store from "./users/store";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from "./Navbar/navbar";
+
+import About from "./Home/About/about";
+
 
 
 function App() {
@@ -18,6 +29,7 @@ function App() {
       <Provider store={store}>
         <CurrentUser>
           <div>
+            <Navbar/>
             <Routes>
               <Route path='/' element={<Home/>} />
               <Route path="/login" element={<Signin />} />
@@ -26,7 +38,15 @@ function App() {
               <Route path="/admin/users" element={<UserTable />} />
               <Route path="/account/:id" element={<Account />} />
               <Route path="/profile/:id" element={<UserDetails />} />
-              <Route path='/detail/:id' element={<Detail/>} />
+              <Route  path='/post/:id' element={<Post/>} />
+              <Route path="/search"    element={<Search/>}/>
+            <Route path="/search/:search" element={<Search />} />
+
+            <Route path="/detail/:breedId/*"    element={<Detail/>}/>
+
+
+            <Route path="/admin"    element={<Admin/>}/>
+            <Route  path='/about' element={<About/>} />
 
               
 
@@ -42,26 +62,3 @@ export default App;
 
 
 
-
-// function App() {
-//   return (
-
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-
-// }

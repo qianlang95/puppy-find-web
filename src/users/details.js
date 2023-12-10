@@ -5,7 +5,6 @@ import * as client from "./client";
 import * as followsClient from "../follows/client";
 import * as likesClient from "../userLikes/client";
 import * as postsClient from "../userPosts/client";
-import Navbar from "../Home/Navbar/navbar";
 import './details.css';
 import FooterNav from "../Home/Footer";
 
@@ -83,7 +82,6 @@ function UserDetails() {
 
   return (
     <div id="detail-page" className="profile-container">
-      <Navbar/>
       <div className="container mt-4 flex-grow-1">
   
         {/* First Row - Profile Information */}
@@ -182,9 +180,9 @@ function UserDetails() {
                 <div className="list-group">
                   {likes.length > 0 ? (
                     likes.map((like, index) => (
-                      <a key={index} href={`#`} className="list-group-item list-group-item-action larger-text">
+                      <Link key={index} to={`/detail/${like.breedId}`} className="list-group-item list-group-item-action larger-text">
                         {like.breedId}
-                      </a>
+                      </Link>
                     ))
                   ) : (
                     <p className="larger-text">Seems like nothing here yet...</p>
@@ -204,7 +202,7 @@ function UserDetails() {
                 <div className="list-group">
                   {posts && posts.length > 0 ? (
                     posts.map((post, index) => (
-                      <a key={index} href={`/detail/${post._id}`} className="list-group-item list-group-item-action larger-text">
+                      <a key={index} href={`/post/${post._id}`} className="list-group-item list-group-item-action larger-text">
                         {post.name}
                       </a>
                     ))

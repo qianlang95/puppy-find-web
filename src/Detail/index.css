@@ -1,0 +1,38 @@
+.likes-list {
+    margin-top: 10px;
+    border: 1px solid rgb(212, 20, 20);
+    border-radius: 5px;
+    padding: 10px;
+    width: 200px;
+  }
+  
+  .list-group-item {
+    /* Add your styling for list items */
+    display: block;
+    padding: 8px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: #333;
+    background-color: #faf8fa;
+    border: 1px solid #b48eaf;
+    border-radius: 4px;
+  }
+  
+
+
+  .custom-image {
+    width: 500px; /* Set the desired width */
+    height: 450px; /* Set the desired height */
+    object-fit: cover; /* Optional: Maintain aspect ratio and cover the container */
+  }
+
+
+
+  .custom-image-cat {
+    max-width: 100%; /* Make sure the image is responsive within its container */
+    height: auto;
+  }
+
+  .btn-container {
+    text-align: center; /* Center the button and associated elements */
+  }

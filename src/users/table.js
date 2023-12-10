@@ -3,7 +3,6 @@ import * as client from "./client";
 import { BsTrash3Fill, BsFillCheckCircleFill, BsPencil, BsPlusCircleFill  } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import './table.css';
-import Navbar from "../Home/Navbar/navbar";
 import FooterNav from "../Home/Footer";
 import { useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
@@ -75,7 +74,6 @@ function UserTable() {
 
   return (
     <div id="detail-page">
-      <Navbar />
       <div className="container detail-container">
         <h1 className="my-4"><FaUserShield /> Check all the users' info here</h1>
 

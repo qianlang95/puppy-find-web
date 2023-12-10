@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import './Account.css';
-import Navbar from "../Home/Navbar/navbar";
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "./reducer";
 import FooterNav from "../Home/Footer";
@@ -87,7 +86,6 @@ function Account() {
 
   return (
     <div id="account-page">
-    <Navbar/>
 
     <div className=" container-fluid mt-5 account-container">
     <h1 className="mb-4 account-header">🫧 {account ? account.username : 'Loading...'}'s Account 🫧</h1>
@@ -200,7 +198,7 @@ function Account() {
                       All the Users
                     </Link>
 
-                    <Link to="#" className="btn btn-warning ms-2 account-button">
+                    <Link to="/admin" className="btn btn-warning ms-2 account-button">
                       Admin Report
                     </Link>
                   </>

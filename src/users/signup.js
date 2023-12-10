@@ -4,7 +4,6 @@ import * as client from "./client";
 import './Signin.css';
 import { useDispatch } from 'react-redux';
 import { setCurrentUser } from './reducer'; 
-import Navbar from "../Home/Navbar/navbar";
 
 function Signup() {
   const [username, setUsername] = useState("");
@@ -19,7 +18,7 @@ function Signup() {
       const credentials = { username, password, role }; // Include role in credentials
       const user = await client.signup(credentials);
       dispatch(setCurrentUser(user));
-      navigate("/account");
+      navigate("/");
     } catch (err) {
       setError(err.response.data.message);
     }
@@ -27,7 +26,6 @@ function Signup() {
 
   return (
     <div>
-      <Navbar />
     
     <div className="signin-page">
       <div className="signin-container">

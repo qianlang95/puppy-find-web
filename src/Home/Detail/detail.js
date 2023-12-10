@@ -3,16 +3,16 @@ import "../Detail/detail.css"
 
 
 import * as client from "./client"
-import Navbar from "../Navbar/navbar";
 import FooterNav from "../Footer";
 import "../Detail/v1008-35.jpg"
 import { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
+import Comments from "../../Comments";
+import { useSelector } from "react-redux";
 
 
 
-
-function Detail(){
+function Post(){
     const {id} = useParams();
     const [pet, setPet] = useState({});
 
@@ -32,11 +32,10 @@ function Detail(){
     },[])
 
     // const URL =`http://localhost:4001/api/pets/${id}`
-
+    const { currentUser } = useSelector((state) => state.userReducer);
 
     return(
         <div className="web-container">
-            <Navbar/>
             <div className="content" >
                 <div class="card  bg-light mb-3" style={{"max-width": "18rem;"}}>
                  <div class="card-header title_pos"> <b>Pet Detail: {pet.name}</b> </div>
@@ -50,12 +49,19 @@ function Detail(){
                         <p class="card-text">Location: {pet.location}</p>
                     </div>
                 </div>  
-                <div class="alert alert-warning alert_mv" role="alert">
-                    To list or start a petition for adopting a puppy you must be registered <a href="#" class="alert-link">Click here to register</a>.
-                </div>
+
+
+                {currentUser && <Comments postId={id}/>}
+                <br></br>
+                {/* <div class="alert alert-warning alert_mv" role="alert">
+                    To list or start a petition for adopting a puppy you must be registered <a href="/register" class="alert-link">Click here to register</a>.
+                </div> */}
 
 
             </div>
+
+
+            
 
 
 
@@ -66,4 +72,4 @@ function Detail(){
     );
 }
 
-export default Detail;
+export default Post;

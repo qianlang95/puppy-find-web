@@ -1,0 +1,53 @@
+.web-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* background: url("./pet-bg.jpg") center repeat; */
+    background: url("./v1008-35.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.content {
+    flex: 2;
+    /* border: solid; */
+}
+
+.acc-cointaner{
+    /* border:solid black; */
+    width: 50rem;
+    margin: auto;
+}
+
+.webcoint{
+    margin-top: 53px !important;
+    /* border: solid black; */
+    margin: auto;
+    width: 70rem;
+    /* height: 20rem; */
+}
+
+.about-cl{
+    /* border: solid; */
+    display: flex;
+    justify-content: center;
+    /* height: 15rem; */
+}
+
+.card-ed{
+    margin-right: 20px !important;
+}
+
+.bt-ed{
+    border-radius: 20px;
+}
+
+.float-center{
+    display: flex;
+    justify-content: center;
+}
+
+.float-c{
+    margin: auto;
+
+}
